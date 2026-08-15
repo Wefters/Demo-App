@@ -1,0 +1,9 @@
+minimumReleaseAgeExclude:
+  - '@wefterjs/cli@0.0.3'
+  - '@wefterjs/biometric@0.0.1'
+  - '@wefterjs/browser@0.0.1'
+  - '@wefterjs/flash-light@0.0.1 || 0.0.2'
+  - '@wefterjs/haptics@0.0.1'
+  - '@wefterjs/scanner@0.0.1'
+  - '@wefterjs/secure-storage@0.0.1'
+  - '@wefterjs/dialog@0.0.1'

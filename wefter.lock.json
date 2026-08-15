@@ -1,0 +1,33 @@
+{
+  "plugins": {
+    "biometric": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-aa078a062805b257b80919c0bdd1794bb00c4ec2fd4b3e29acb701838d67416a"
+    },
+    "browser": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-9c440055cab534d74358d65942ad21a5f18ef052a28254b130b0608b79403a0c"
+    },
+    "flash-light": {
+      "resolved": "0.0.2",
+      "integrity": "sha256-716efac92830a025c2383b3c44fa7afa270f0d39238f000ca707d696a45e05c3"
+    },
+    "scanner": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-65456dda126e6b9a32b464723d758d03c2ee5b8f82327cb1aac5bd66d97e523a"
+    },
+    "secure-storage": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-f82bd4b6f3bf92909c5ce5ce94e083f6d8fc220744cacef2c30014b1cdc313ca"
+    },
+    "haptics": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-e9bffb30a8888155a5cfd38785ce44fcf4c690a79692ce6a6a2bf862e19fa5a0"
+    },
+    "dialog": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-aa08a3616f527e5213923a26a97215fc4de872361f8aaa052826ddf6bbd007f7"
+    }
+  },
+  "syncedAt": "2026-08-15T15:28:35.455Z"
+}

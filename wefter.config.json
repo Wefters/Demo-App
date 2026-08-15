@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    "@wefterjs/biometric",
+    "@wefterjs/browser",
+    "@wefterjs/flash-light",
+    "@wefterjs/scanner",
+    "@wefterjs/secure-storage",
+    "@wefterjs/haptics",
+    "@wefterjs/dialog"
+  ],
+  "pluginsDir": "node_modules",
+  "webDir": "dist",
+  "pluginConfig": {},
+  "environments": {
+    "development": {
+      "appId": "dev.sandip.wefter.demo",
+      "appName": "Wefter Demo"
+    }
+  },
+  "launchBackground": "#111314"
+}
