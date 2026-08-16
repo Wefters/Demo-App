@@ -6,7 +6,12 @@
     "@wefterjs/scanner",
     "@wefterjs/secure-storage",
     "@wefterjs/haptics",
-    "@wefterjs/dialog"
+    "@wefterjs/dialog",
+    "@wefterjs/network",
+    "@wefterjs/clipboard",
+    "@wefterjs/device",
+    "@wefterjs/screen",
+    "@wefterjs/share"
   ],
   "pluginsDir": "node_modules",
   "webDir": "dist",

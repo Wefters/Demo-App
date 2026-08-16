@@ -9,8 +9,8 @@
       "integrity": "sha256-9c440055cab534d74358d65942ad21a5f18ef052a28254b130b0608b79403a0c"
     },
     "flash-light": {
-      "resolved": "0.0.2",
-      "integrity": "sha256-716efac92830a025c2383b3c44fa7afa270f0d39238f000ca707d696a45e05c3"
+      "resolved": "0.0.3",
+      "integrity": "sha256-18f19f0337a9c16036303929541d12be2b889d18be0a5a262fbd96ccdcf6300b"
     },
     "scanner": {
       "resolved": "0.0.1",
@@ -27,7 +27,27 @@
     "dialog": {
       "resolved": "0.0.1",
       "integrity": "sha256-aa08a3616f527e5213923a26a97215fc4de872361f8aaa052826ddf6bbd007f7"
+    },
+    "network": {
+      "resolved": "0.0.2",
+      "integrity": "sha256-b76aa0758480f0c94fcfed1ae32bb251d2051c77ff8c963b9c3e4a104c09efeb"
+    },
+    "clipboard": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-418f8ab89cdca1f5b326acd027817a2d80a71dbae74a83b017ed4b12cf9ab43e"
+    },
+    "device": {
+      "resolved": "0.0.2",
+      "integrity": "sha256-0cc889fb3dfe02da3e0cd046337be291638e9cfc922ba4d34d4339a5ea78cfe8"
+    },
+    "screen": {
+      "resolved": "0.0.2",
+      "integrity": "sha256-df6d6ef656695d3c98ccd55ca27a236fe0137286fc3352ffdef7dcb449abf5fe"
+    },
+    "share": {
+      "resolved": "0.0.2",
+      "integrity": "sha256-d2f89dab886ba18a2ebd423c3f95414fe276eb202c34a56d2a5f4ea4cb1f4501"
     }
   },
-  "syncedAt": "2026-08-15T15:28:35.455Z"
+  "syncedAt": "2026-08-16T18:13:23.346Z"
 }

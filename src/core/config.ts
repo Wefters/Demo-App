@@ -1,1 +1,1 @@
-export const FRAMEWORK_VERSION = 'v2.4.0'
+export const FRAMEWORK_VERSION = 'v0.0.1'

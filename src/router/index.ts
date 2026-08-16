@@ -57,6 +57,36 @@ const router = createRouter({
           meta: { title: 'Secure Storage' },
         },
         {
+          path: 'clipboard',
+          name: 'clipboard',
+          component: () => import('@/views/Clipboard.vue'),
+          meta: { title: 'Clipboard' },
+        },
+        {
+          path: 'device',
+          name: 'device',
+          component: () => import('@/views/Device.vue'),
+          meta: { title: 'Device Info' },
+        },
+        {
+          path: 'network',
+          name: 'network',
+          component: () => import('@/views/Network.vue'),
+          meta: { title: 'Network Status' },
+        },
+        {
+          path: 'screen',
+          name: 'screen',
+          component: () => import('@/views/Screen.vue'),
+          meta: { title: 'Screen Control' },
+        },
+        {
+          path: 'share',
+          name: 'share',
+          component: () => import('@/views/Share.vue'),
+          meta: { title: 'Share' },
+        },
+        {
           path: 'about',
           name: 'about',
           component: () => import('@/views/About.vue'),

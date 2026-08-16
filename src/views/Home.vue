@@ -46,9 +46,14 @@ const modules = [
   { name: 'Scanner',        icon: 'ScanLine',      route: '/scanner',        desc: 'QR & barcode scanning' },
   { name: 'Biometric',      icon: 'Fingerprint',   route: '/biometric',      desc: 'Auth & fingerprint' },
   { name: 'Browser',        icon: 'Globe',         route: '/browser',        desc: 'In-app web browser' },
+  { name: 'Clipboard',      icon: 'Copy',          route: '/clipboard',      desc: 'Clipboard read & write' },
+  { name: 'Device',         icon: 'Smartphone',    route: '/device',         desc: 'Hardware telemetry & UUID' },
   { name: 'Dialog',         icon: 'MessageSquare', route: '/dialog',         desc: 'Native dialogs' },
   { name: 'FlashLight',     icon: 'Flashlight',    route: '/flashlight',     desc: 'Torch control' },
   { name: 'Haptics',        icon: 'Vibrate',       route: '/haptics',        desc: 'Haptic feedback' },
+  { name: 'Network',        icon: 'Wifi',          route: '/network',        desc: 'Connectivity & events' },
+  { name: 'Screen',         icon: 'Monitor',       route: '/screen',         desc: 'Brightness & orientation' },
   { name: 'Secure Storage', icon: 'ShieldCheck',   route: '/secure-storage', desc: 'Encrypted key-value' },
+  { name: 'Share',          icon: 'Share2',        route: '/share',          desc: 'Native share sheet' },
 ]
 </script>

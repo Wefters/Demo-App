@@ -8,8 +8,8 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
   server: {
-    host: '0.0.0.0',   // allow Android / other devices on same network
-    allowedHosts: true, // required for Wefter live-reload tunneled URL
+    host: '0.0.0.0',
+    allowedHosts: true,
   },
   resolve: {
     alias: {

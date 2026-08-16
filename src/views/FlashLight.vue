@@ -2,7 +2,7 @@
   <ModulePage
     icon="Flashlight"
     title="Camera Torch & Flashlight"
-    desc="@wefterjs/flash-light v0.0.2"
+    desc="@wefterjs/flash-light v0.0.3"
     info="Control native device rear camera flash LED with torch mode toggling, variable brightness strength levels, and state change listeners."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
