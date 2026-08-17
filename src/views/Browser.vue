@@ -42,6 +42,16 @@
           </div>
         </div>
 
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-text-secondary">Toolbar Title (Optional)</label>
+          <input
+            v-model="openOptions.title"
+            type="text"
+            placeholder="e.g. Wefter Documentation"
+            class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
+          />
+        </div>
+
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
             <input type="checkbox" v-model="openOptions.showToolbar" class="rounded accent-accent" />
@@ -100,6 +110,16 @@
             v-model="authOptions.redirectUri"
             type="text"
             placeholder="wefter://auth-callback"
+            class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-text-secondary">Session ID (Optional)</label>
+          <input
+            v-model="authOptions.id"
+            type="text"
+            placeholder="e.g. oauth-demo-1"
             class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
           />
         </div>

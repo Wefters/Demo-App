@@ -82,6 +82,7 @@ const navItems = [
   { name: 'Screen', icon: 'Monitor', route: '/screen' },
   { name: 'Secure Storage', icon: 'ShieldCheck', route: '/secure-storage' },
   { name: 'Share', icon: 'Share2', route: '/share' },
+  { name: 'Dev Tools', icon: 'Wrench', route: '/dev-tools' },
 ]
 </script>
 

@@ -11,7 +11,8 @@
     "@wefterjs/clipboard",
     "@wefterjs/device",
     "@wefterjs/screen",
-    "@wefterjs/share"
+    "@wefterjs/share",
+    "@wefterjs/error-test"
   ],
   "pluginsDir": "node_modules",
   "webDir": "dist",

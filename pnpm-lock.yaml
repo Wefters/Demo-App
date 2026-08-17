@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@wefterjs/core': link:../../Wefter/packages/core
+  '@wefterjs/devtools': link:../../Wefter/packages/devtools
+  '@wefterjs/error-test': link:../../Plugins/ErrorTest
+
 importers:
 
   .:
@@ -15,44 +20,47 @@ importers:
         specifier: ^4.3.3
         version: 4.3.3(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0))
       '@wefterjs/biometric':
-        specifier: link:../../Plugins/Biometric
-        version: link:../../Plugins/Biometric
+        specifier: ^0.0.1
+        version: 0.0.1
       '@wefterjs/browser':
-        specifier: link:../../Plugins/Browser
-        version: link:../../Plugins/Browser
+        specifier: ^0.0.1
+        version: 0.0.1
       '@wefterjs/clipboard':
-        specifier: link:../../Plugins/Clipboard
-        version: link:../../Plugins/Clipboard
+        specifier: ^0.0.1
+        version: 0.0.1
       '@wefterjs/core':
         specifier: link:../../Wefter/packages/core
         version: link:../../Wefter/packages/core
       '@wefterjs/device':
-        specifier: link:../../Plugins/Device
-        version: link:../../Plugins/Device
+        specifier: ^0.0.2
+        version: 0.0.2
       '@wefterjs/dialog':
-        specifier: link:../../Plugins/Dialog
-        version: link:../../Plugins/Dialog
+        specifier: ^0.0.1
+        version: 0.0.1
+      '@wefterjs/error-test':
+        specifier: link:../../Plugins/ErrorTest
+        version: link:../../Plugins/ErrorTest
       '@wefterjs/flash-light':
-        specifier: link:../../Plugins/FlashLight
-        version: link:../../Plugins/FlashLight
+        specifier: ^0.0.3
+        version: 0.0.3
       '@wefterjs/haptics':
-        specifier: link:../../Plugins/Haptics
-        version: link:../../Plugins/Haptics
+        specifier: ^0.0.1
+        version: 0.0.1
       '@wefterjs/network':
-        specifier: link:../../Plugins/Network
-        version: link:../../Plugins/Network
+        specifier: ^0.0.2
+        version: 0.0.2
       '@wefterjs/scanner':
-        specifier: link:../../Plugins/Scanner
-        version: link:../../Plugins/Scanner
+        specifier: ^0.0.1
+        version: 0.0.1
       '@wefterjs/screen':
-        specifier: link:../../Plugins/Screen
-        version: link:../../Plugins/Screen
+        specifier: ^0.0.2
+        version: 0.0.2
       '@wefterjs/secure-storage':
-        specifier: link:../../Plugins/SecureStorage
-        version: link:../../Plugins/SecureStorage
+        specifier: ^0.0.1
+        version: 0.0.1
       '@wefterjs/share':
-        specifier: link:../../Plugins/Share
-        version: link:../../Plugins/Share
+        specifier: ^0.0.2
+        version: 0.0.2
       pinia:
         specifier: ^4.0.2
         version: 4.0.3(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3))
@@ -79,8 +87,11 @@ importers:
         specifier: ^0.9.1
         version: 0.9.1(typescript@6.0.3)(vue@3.5.41(typescript@6.0.3))
       '@wefterjs/cli':
-        specifier: link:../../Wefter/packages/cli
-        version: link:../../Wefter/packages/cli
+        specifier: link:../../Wefter/packages/core
+        version: link:../../Wefter/packages/core
+      '@wefterjs/devtools':
+        specifier: link:../../Wefter/packages/devtools
+        version: link:../../Wefter/packages/devtools
       npm-run-all2:
         specifier: ^9.0.2
         version: 9.0.3
@@ -581,6 +592,42 @@ packages:
         optional: true
       vue:
         optional: true
+
+  '@wefterjs/biometric@0.0.1':
+    resolution: {integrity: sha512-iWXINv933g7fhDDc94T44eO+Z2ihR3X4d1fFPGVZ2pcaG6EsSumA40ogOidURt0wFy6jCMBoRuPUiQcVfx+yTw==}
+
+  '@wefterjs/browser@0.0.1':
+    resolution: {integrity: sha512-MlFZiWH+3AWb9Mb633fySnvf5QQgIoLZ7opytq+g25RHQfaqm66pq7GDKo+iRt8/TxuhucG3Qaz8AV8TXjlL9g==}
+
+  '@wefterjs/clipboard@0.0.1':
+    resolution: {integrity: sha512-UjMWY9DZRHx8fYYtrT2xhsOlOgtB0gjH+FVemB+WvH2ysiXMKqAuGJJy6hNsPe1VyqgvqXIo6wqSZNxp+KiEiw==}
+
+  '@wefterjs/device@0.0.2':
+    resolution: {integrity: sha512-2lq9o/wzD9yqqtnMJxBantJjTtgLRRF2mVoPzNJA22Doq40A0CCt7+20mzp0tkdFjVzFb/ror3hENamvRN8iOg==}
+
+  '@wefterjs/dialog@0.0.1':
+    resolution: {integrity: sha512-4FVeaTGCvtiva+kEbkZneXLaMZbFW2kfGlQFJU3C7cjyzeBagNhRmnNcnwyrFtxrWja7Hyqc0Dxq7bqdkYLKtQ==}
+
+  '@wefterjs/flash-light@0.0.3':
+    resolution: {integrity: sha512-OdcGO+rSOSftPUxCxAskmFe4x//x7uz6wO9+D+flNN0uF44qA+U7Tj4ETQgWqcznTj+56S6/lWImDiYx18gePA==}
+
+  '@wefterjs/haptics@0.0.1':
+    resolution: {integrity: sha512-EiwITViN1R16tDkX+TCfkchywfSQEGx+B+QKEdWEJrA+Q7nqUAQs8mR5vil3uIpYgKhT0RQz1nvVsy7KtYbhrA==}
+
+  '@wefterjs/network@0.0.2':
+    resolution: {integrity: sha512-7FQUSDtpEcI0BqxQ+ln1onA0GkMmgCaDV5+hvJkScwjpLx7zwU+dNaMIPQnf9Z79zvwvl4am+pJWauwQZghFOQ==}
+
+  '@wefterjs/scanner@0.0.1':
+    resolution: {integrity: sha512-oiEnr9pWWotVgC3prPkhkWWgkr3Vk3NMLckrO3R38uMFhF84UZeESuVeosPDzflnNkW4N+zyYBSQxbE3ztKYJg==}
+
+  '@wefterjs/screen@0.0.2':
+    resolution: {integrity: sha512-wwHGBdpDJPYNp58YgJohtlzv7ecJwpGZf+2jdcYxtrr1m9bOYXcZbHVGP2HtqF08OkPRQibY9ryxzjcWfBx3PQ==}
+
+  '@wefterjs/secure-storage@0.0.1':
+    resolution: {integrity: sha512-3ouUbVMFbSjHildNHpmDacR32kukPBA2kW2eicJSiywViBtgnZgQkr7ZWc+UTMZha6cnBBUi+7FanEe/HV7VUA==}
+
+  '@wefterjs/share@0.0.2':
+    resolution: {integrity: sha512-qly8z6L8RQ81SObBgMEB2wTaSIzftMYj7gCTo9jl8l4qQjRXskZBTVrPy3TIB6lfv5oo2G5rUskywwKlUwCnJg==}
 
   acorn@8.18.0:
     resolution: {integrity: sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==}
@@ -1796,6 +1843,54 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
       vue: 3.5.41(typescript@6.0.3)
+
+  '@wefterjs/biometric@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/browser@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/clipboard@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/device@0.0.2':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/dialog@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/flash-light@0.0.3':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/haptics@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/network@0.0.2':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/scanner@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/screen@0.0.2':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/secure-storage@0.0.1':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
+
+  '@wefterjs/share@0.0.2':
+    dependencies:
+      '@wefterjs/core': link:../../Wefter/packages/core
 
   acorn@8.18.0: {}
 

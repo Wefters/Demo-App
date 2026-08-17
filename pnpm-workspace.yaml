@@ -2,8 +2,17 @@ minimumReleaseAgeExclude:
   - '@wefterjs/cli@0.0.3'
   - '@wefterjs/biometric@0.0.1'
   - '@wefterjs/browser@0.0.1'
-  - '@wefterjs/flash-light@0.0.1 || 0.0.2'
+  - '@wefterjs/flash-light@0.0.1 || 0.0.2 || 0.0.3'
   - '@wefterjs/haptics@0.0.1'
   - '@wefterjs/scanner@0.0.1'
   - '@wefterjs/secure-storage@0.0.1'
   - '@wefterjs/dialog@0.0.1'
+  - '@wefterjs/clipboard@0.0.1'
+  - '@wefterjs/device@0.0.2'
+  - '@wefterjs/network@0.0.2'
+  - '@wefterjs/screen@0.0.2'
+  - '@wefterjs/share@0.0.2'
+overrides:
+  '@wefterjs/core': link:../../Wefter/packages/core
+  '@wefterjs/devtools': link:../../Wefter/packages/devtools
+  '@wefterjs/error-test': link:../../Plugins/ErrorTest

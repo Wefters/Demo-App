@@ -59,9 +59,20 @@
               class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
             />
           </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-text-secondary">Max Zoom Level</label>
+            <input
+              v-model.number="scanOptions.maxZoom"
+              type="number"
+              step="0.5"
+              placeholder="5.0"
+              class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
+            />
+          </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
             <input type="checkbox" v-model="scanOptions.continuous" class="rounded accent-accent" />
             <span>Continuous</span>
@@ -77,6 +88,10 @@
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
             <input type="checkbox" v-model="scanOptions.focusOnTap" class="rounded accent-accent" />
             <span>Tap to Focus</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
+            <input type="checkbox" v-model="scanOptions.zoomControl" class="rounded accent-accent" />
+            <span>Zoom Control</span>
           </label>
         </div>
 

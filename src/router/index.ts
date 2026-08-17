@@ -87,6 +87,12 @@ const router = createRouter({
           meta: { title: 'Share' },
         },
         {
+          path: 'dev-tools',
+          name: 'dev-tools',
+          component: () => import('@/views/DevTools.vue'),
+          meta: { title: 'Dev Tools' },
+        },
+        {
           path: 'about',
           name: 'about',
           component: () => import('@/views/About.vue'),

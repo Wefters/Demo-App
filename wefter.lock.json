@@ -47,7 +47,11 @@
     "share": {
       "resolved": "0.0.2",
       "integrity": "sha256-d2f89dab886ba18a2ebd423c3f95414fe276eb202c34a56d2a5f4ea4cb1f4501"
+    },
+    "error-test": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-24f75c643f33d0581cf52eb1835e197efdf5d13cb3ab3e9453ddb8eb77ecca80"
     }
   },
-  "syncedAt": "2026-08-16T18:13:23.346Z"
+  "syncedAt": "2026-08-17T11:50:31.434Z"
 }

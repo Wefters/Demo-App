@@ -150,6 +150,27 @@
           </div>
         </div>
 
+        <div class="grid grid-cols-2 gap-2">
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-text-secondary">OK Label</label>
+            <input
+              v-model="promptForm.okText"
+              type="text"
+              placeholder="Submit"
+              class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-text-secondary">Cancel Label</label>
+            <input
+              v-model="promptForm.cancelText"
+              type="text"
+              placeholder="Cancel"
+              class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
+            />
+          </div>
+        </div>
+
         <div class="flex flex-col gap-1">
           <label class="text-xs font-medium text-text-secondary">Message / Label</label>
           <textarea
@@ -187,11 +208,12 @@
           <div class="flex flex-col gap-1">
             <label class="text-xs font-medium text-text-secondary">Duration</label>
             <select
-              v-model="toastForm.duration"
+              v-model="toastForm.durationMode"
               class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
             >
               <option value="short">Short (~2 seconds)</option>
               <option value="long">Long (~3.5 seconds)</option>
+              <option value="custom">Custom (ms)</option>
             </select>
           </div>
 
@@ -206,6 +228,16 @@
               <option value="top">Top</option>
             </select>
           </div>
+        </div>
+
+        <div v-if="toastForm.durationMode === 'custom'" class="flex flex-col gap-1">
+          <label class="text-xs font-medium text-text-secondary">Custom Duration (ms)</label>
+          <input
+            v-model.number="toastForm.customDuration"
+            type="number"
+            placeholder="2500"
+            class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
+          />
         </div>
 
         <button
@@ -256,7 +288,8 @@ const promptForm = reactive({
 
 const toastForm = reactive({
   text: 'Action completed successfully!',
-  duration: 'short' as 'short' | 'long',
+  durationMode: 'short' as 'short' | 'long' | 'custom',
+  customDuration: 2500,
   position: 'bottom' as ToastPosition,
 })
 
@@ -342,7 +375,7 @@ async function triggerToast() {
   try {
     const res = await Dialog.toast({
       text: toastForm.text,
-      duration: toastForm.duration,
+      duration: toastForm.durationMode === 'custom' ? toastForm.customDuration : toastForm.durationMode,
       position: toastForm.position,
     })
     logs.value.unshift({
