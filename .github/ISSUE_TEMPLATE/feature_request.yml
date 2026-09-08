@@ -1,0 +1,13 @@
+name: Feature request
+description: Suggest an enhancement or new test view for the Demo application.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Proposal
+      description: Describe the feature or demonstration view you would like added.
+      placeholder: Describe the enhancement.
+    validations:
+      required: true

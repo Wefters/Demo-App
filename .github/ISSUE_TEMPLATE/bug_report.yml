@@ -1,0 +1,72 @@
+name: Bug report
+description: Report a bug or UI crash in the Wefter Demo application.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues before submitting a bug report for Demo-App.
+  - type: dropdown
+    id: route
+    attributes:
+      label: Affected view route
+      description: Select which plugin test view or route encountered the problem.
+      options:
+        - "Home (/)"
+        - "App (/app)"
+        - "Biometric (/biometric)"
+        - "Browser (/browser)"
+        - "Clipboard (/clipboard)"
+        - "Device (/device)"
+        - "Dialog (/dialog)"
+        - "FlashLight (/flashlight)"
+        - "Haptics (/haptics)"
+        - "Network (/network)"
+        - "Scanner (/scanner)"
+        - "Screen (/screen)"
+        - "SecureStorage (/secure-storage)"
+        - "Share (/share)"
+        - "Storage (/storage)"
+        - "DevTools (/devtools)"
+        - "General / Layout"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Platform where the bug occurred.
+      options:
+        - "Android physical device"
+        - "Android emulator"
+        - "iOS physical device"
+        - "iOS simulator"
+        - "Desktop browser (Chrome, Safari, Firefox)"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: Explain what happened.
+      placeholder: Describe the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How to reproduce the problem.
+      placeholder: |
+        1. Open view
+        2. Tap action button
+        3. Observe crash or error
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console or logcat output
+      description: Paste any browser console errors or native device logs.
+      render: shell

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Wefter Documentation
+    url: https://wefter.dev
+    about: Review Wefter guides and reference docs.
+  - name: Discord Community
+    url: https://discord.gg/wefter
+    about: Discuss Demo-App development in the Wefter Discord.
