@@ -251,6 +251,16 @@ const masterPackages = [
 
 const pluginLinks = [
   {
+    name: 'App',
+    npmName: '@wefterjs/app',
+    version: '0.0.1',
+    icon: 'AppWindow',
+    desc: 'App lifecycle, deep links, hardware back button, and build metadata.',
+    githubUrl: 'https://github.com/Wefters/App',
+    gitUrl: 'https://github.com/Wefters/App.git',
+    npmUrl: 'https://www.npmjs.com/package/@wefterjs/app',
+  },
+  {
     name: 'Biometric',
     npmName: '@wefterjs/biometric',
     version: '0.0.1',
@@ -319,6 +329,16 @@ const pluginLinks = [
     githubUrl: 'https://github.com/Wefters/SecureStorage',
     gitUrl: 'https://github.com/Wefters/SecureStorage.git',
     npmUrl: 'https://www.npmjs.com/package/@wefterjs/secure-storage',
+  },
+  {
+    name: 'Storage',
+    npmName: '@wefterjs/storage',
+    version: '0.0.1',
+    icon: 'Database',
+    desc: 'Fast unencrypted key-value storage with automatic JSON serialization.',
+    githubUrl: 'https://github.com/Wefters/Storage',
+    gitUrl: 'https://github.com/Wefters/Storage.git',
+    npmUrl: 'https://www.npmjs.com/package/@wefterjs/storage',
   },
 ]
 </script>

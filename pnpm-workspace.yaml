@@ -13,6 +13,6 @@ minimumReleaseAgeExclude:
   - '@wefterjs/screen@0.0.2'
   - '@wefterjs/share@0.0.2'
 overrides:
-  '@wefterjs/core': link:../../Wefter/packages/core
-  '@wefterjs/devtools': link:../../Wefter/packages/devtools
-  '@wefterjs/error-test': link:../../Plugins/ErrorTest
+  '@wefterjs/core': link:../Wefter/packages/core
+  '@wefterjs/devtools': link:../Wefter/packages/devtools
+  '@wefterjs/error-test': link:../Plugins/ErrorTest

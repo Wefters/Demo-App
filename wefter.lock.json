@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "app": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-2f035ca684b7ba5535abc01b4c2f24f44079305c86f43a05e79fd01c5ebaa263"
+    },
     "biometric": {
       "resolved": "0.0.1",
       "integrity": "sha256-aa078a062805b257b80919c0bdd1794bb00c4ec2fd4b3e29acb701838d67416a"
@@ -19,6 +23,10 @@
     "secure-storage": {
       "resolved": "0.0.1",
       "integrity": "sha256-f82bd4b6f3bf92909c5ce5ce94e083f6d8fc220744cacef2c30014b1cdc313ca"
+    },
+    "storage": {
+      "resolved": "0.0.1",
+      "integrity": "sha256-8ad4c40c5adc125c84a650340e0c81179ba0a342aee1286212c808b082e9f8fd"
     },
     "haptics": {
       "resolved": "0.0.1",
@@ -53,5 +61,5 @@
       "integrity": "sha256-24f75c643f33d0581cf52eb1835e197efdf5d13cb3ab3e9453ddb8eb77ecca80"
     }
   },
-  "syncedAt": "2026-08-17T14:03:02.064Z"
+  "syncedAt": "2026-09-08T08:54:35.642Z"
 }

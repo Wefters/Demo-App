@@ -1,10 +1,12 @@
 {
   "plugins": [
+    "@wefterjs/app",
     "@wefterjs/biometric",
     "@wefterjs/browser",
     "@wefterjs/flash-light",
     "@wefterjs/scanner",
     "@wefterjs/secure-storage",
+    "@wefterjs/storage",
     "@wefterjs/haptics",
     "@wefterjs/dialog",
     "@wefterjs/network",

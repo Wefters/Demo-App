@@ -15,6 +15,12 @@ const router = createRouter({
           meta: { title: 'Wefter' },
         },
         {
+          path: 'app',
+          name: 'app',
+          component: () => import('@/views/App.vue'),
+          meta: { title: 'App' },
+        },
+        {
           path: 'scanner',
           name: 'scanner',
           component: () => import('@/views/Scanner.vue'),
@@ -55,6 +61,12 @@ const router = createRouter({
           name: 'secure-storage',
           component: () => import('@/views/SecureStorage.vue'),
           meta: { title: 'Secure Storage' },
+        },
+        {
+          path: 'storage',
+          name: 'storage',
+          component: () => import('@/views/Storage.vue'),
+          meta: { title: 'Storage' },
         },
         {
           path: 'clipboard',

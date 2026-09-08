@@ -165,6 +165,14 @@ const corePackages = [
 
 const plugins = [
   {
+    name: 'App',
+    npm: '@wefterjs/app',
+    version: '0.0.1',
+    icon: 'AppWindow',
+    desc: 'App lifecycle state, deep link ingestion, Android hardware back button, and build metadata.',
+    permissions: [],
+  },
+  {
     name: 'Biometric',
     npm: '@wefterjs/biometric',
     version: '0.0.1',
@@ -250,6 +258,14 @@ const plugins = [
     version: '0.0.1',
     icon: 'ShieldCheck',
     desc: 'Encrypted key-value storage backed by Android EncryptedSharedPreferences and iOS Keychain.',
+    permissions: [],
+  },
+  {
+    name: 'Storage',
+    npm: '@wefterjs/storage',
+    version: '0.0.1',
+    icon: 'Database',
+    desc: 'Fast unencrypted key-value storage with automatic JSON serialization via SharedPreferences and UserDefaults.',
     permissions: [],
   },
   {

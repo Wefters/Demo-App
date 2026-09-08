@@ -70,6 +70,7 @@ const app = useApp()
 
 const navItems = [
   { name: 'Home', icon: 'House', route: '/' },
+  { name: 'App', icon: 'AppWindow', route: '/app' },
   { name: 'Scanner', icon: 'ScanLine', route: '/scanner' },
   { name: 'Biometric', icon: 'Fingerprint', route: '/biometric' },
   { name: 'Browser', icon: 'Globe', route: '/browser' },
@@ -81,6 +82,7 @@ const navItems = [
   { name: 'Network', icon: 'Wifi', route: '/network' },
   { name: 'Screen', icon: 'Monitor', route: '/screen' },
   { name: 'Secure Storage', icon: 'ShieldCheck', route: '/secure-storage' },
+  { name: 'Storage', icon: 'Database', route: '/storage' },
   { name: 'Share', icon: 'Share2', route: '/share' },
   { name: 'Dev Tools', icon: 'Wrench', route: '/dev-tools' },
 ]

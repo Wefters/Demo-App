@@ -1,42 +1,88 @@
-# demo
+# Wefter demo application
 
-This template should help get you started developing with Vue 3 in Vite.
+A mobile showcase and integration test application built with Vue 3 and Vite, demonstrating all official Wefter plugins in a live mobile environment.
 
-## Recommended IDE Setup
+## Overview
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The demo application acts as both a reference implementation and an interactive testing suite for Wefter. It links directly to the local monorepo packages (`@wefterjs/core`, `@wefterjs/cli`, `@wefterjs/devtools`) and all official plugins in `../Plugins`.
 
-## Recommended Browser Setup
+Developers can launch the application on an Android device, iOS simulator, or standard web browser to test native bridge communication, review plugin user interfaces, and inspect telemetry through the developer tools overlay.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Technology stack
 
-## Type Support for `.vue` Imports in TS
+- **Framework**: Vue 3 (Composition API with `<script setup>`)
+- **Build tool**: Vite 8 with `@vitejs/plugin-vue`
+- **Styling**: Tailwind CSS 4
+- **State management**: Pinia 4
+- **Routing**: Vue Router 5
+- **Icons**: Lucide Vue
+- **Bridge and plugins**: `@wefterjs/core`, `@wefterjs/devtools`, and all 15 official Wefter plugins
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Plugin test views
 
-## Customize configuration
+The application organizes each plugin test harness into dedicated routes located in `src/views/`:
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+| View | Route | Tested functionality |
+| --- | --- | --- |
+| `App.vue` | `/app` | Lifecycle transitions, deep links, back button interception, app info, and process controls. |
+| `Biometric.vue` | `/biometric` | Availability checks, biometry type detection, and native authentication prompts. |
+| `Browser.vue` | `/browser` | Custom Tabs, SFSafariViewController, navigation controls, and OAuth flows. |
+| `Clipboard.vue` | `/clipboard` | Writing text and URLs, reading clipboard contents, and clearing the pasteboard. |
+| `Device.vue` | `/device` | Hardware metadata, unique vendor UUID, battery level, and charging state listeners. |
+| `Dialog.vue` | `/dialog` | Alert, confirm, prompt dialogs with custom input types, and positioned toasts. |
+| `FlashLight.vue` | `/flashlight` | Torch toggle, brightness intensity adjustment, and external state change events. |
+| `Haptics.vue` | `/haptics` | Impact styles, notification sequences, selection clicks, and custom vibration patterns. |
+| `Network.vue` | `/network` | Real-time connectivity state, connection type detection, and offline handling. |
+| `Scanner.vue` | `/scanner` | Camera barcode and QR scanning, gallery image decoding, and camera zoom controls. |
+| `Screen.vue` | `/screen` | Window brightness, orientation locking, and screen keep-awake controls. |
+| `SecureStorage.vue` | `/secure-storage` | Hardware-encrypted key-value storage using Android Keystore and iOS Keychain. |
+| `Share.vue` | `/share` | Native system share sheets for text, URLs, and titles. |
+| `Storage.vue` | `/storage` | Fast unencrypted JSON key-value storage via SharedPreferences and UserDefaults. |
+| `DevTools.vue` | `/devtools` | Telemetry inspector, manual event emission, and error boundary diagnostics. |
 
-## Project Setup
+## Running the application
 
-```sh
-npm install
+### Development in browser
+
+To run the web interface during development:
+
+```bash
+pnpm install
+pnpm dev
 ```
 
-### Compile and Hot-Reload for Development
+The application will start on `http://localhost:5173`. When running in a standard desktop browser, native bridge calls that require hardware sensors will return unsupported or mock states via `@wefterjs/core` fallbacks.
 
-```sh
-npm run dev
+### Running on Android
+
+Ensure an Android emulator is running or a physical device is connected via USB with USB debugging enabled:
+
+```bash
+# Build the web bundle, sync native files, compile, and launch
+npx wefter run android --watch
 ```
 
-### Type-Check, Compile and Minify for Production
+The `--watch` flag starts the local dev server and proxies file changes into the native web view for hot reloading.
 
-```sh
-npm run build
+### Running on iOS
+
+Requires macOS with Xcode 16 or later:
+
+```bash
+npx wefter run ios --watch
 ```
+
+## Configuration
+
+The application is configured through `wefter.config.json` at the root of `Demo-App/`:
+
+- `plugins`: Array listing all 15 active official plugins.
+- `pluginsDir`: Path to dependencies directory (`node_modules`).
+- `webDir`: Build output directory (`dist`).
+- `environments.development.appId`: Application ID (`dev.sandip.wefter.demo`).
+- `environments.development.appName`: Application display name (`Wefter Demo`).
+- `launchBackground`: Splash and background color (`#111314`).
+
+## License
+
+[MIT](LICENSE) © 2026 Sandip Ghimire

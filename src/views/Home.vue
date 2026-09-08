@@ -49,6 +49,7 @@ import { FRAMEWORK_VERSION } from '@/core/config'
 const app = useApp()
 
 const modules = [
+  { name: 'App', icon: 'AppWindow', route: '/app', desc: 'Lifecycle, deep links & back button' },
   { name: 'Scanner', icon: 'ScanLine', route: '/scanner', desc: 'QR & barcode scanning' },
   { name: 'Biometric', icon: 'Fingerprint', route: '/biometric', desc: 'Auth & fingerprint' },
   { name: 'Browser', icon: 'Globe', route: '/browser', desc: 'In-app web browser' },
@@ -65,6 +66,7 @@ const modules = [
     route: '/secure-storage',
     desc: 'Encrypted key-value',
   },
+  { name: 'Storage', icon: 'Database', route: '/storage', desc: 'Unencrypted key-value + JSON' },
   { name: 'Share', icon: 'Share2', route: '/share', desc: 'Native share sheet' },
   { name: 'Dev Tools', icon: 'Wrench', route: '/dev-tools', desc: 'Bridge inspector & error testing' },
 ]
