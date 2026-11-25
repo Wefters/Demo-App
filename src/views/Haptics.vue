@@ -7,7 +7,9 @@
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Haptic Engine Status</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Haptic Engine Status
+        </h3>
         <button
           @click="checkAvailability"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -18,13 +20,22 @@
       </div>
 
       <div class="grid grid-cols-2 gap-3">
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Engine Available</span>
-          <span class="text-sm font-bold" :class="availability?.available ? 'text-success' : 'text-danger-text'">
-            {{ availability ? (availability.available ? 'AVAILABLE' : 'UNAVAILABLE') : 'CHECKING...' }}
+          <span
+            class="text-sm font-bold"
+            :class="availability?.available ? 'text-success' : 'text-danger-text'"
+          >
+            {{
+              availability ? (availability.available ? 'AVAILABLE' : 'UNAVAILABLE') : 'CHECKING...'
+            }}
           </span>
         </div>
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Amplitude Control</span>
           <span class="text-sm font-bold text-accent">
             {{ availability?.amplitudeControlSupported ? 'SUPPORTED' : 'STANDARD' }}
@@ -34,12 +45,16 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Impact Physical Feedback</h3>
-      
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Impact Physical Feedback
+      </h3>
+
       <div class="flex flex-col gap-2">
         <div class="flex items-center justify-between text-xs text-text-secondary">
           <span>Impact Intensity Override</span>
-          <span class="font-mono text-accent font-bold">{{ (impactIntensity * 100).toFixed(0) }}%</span>
+          <span class="font-mono text-accent font-bold"
+            >{{ (impactIntensity * 100).toFixed(0) }}%</span
+          >
         </div>
         <input
           type="range"
@@ -65,7 +80,9 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Notification & Selection Haptics</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Notification & Selection Haptics
+      </h3>
       <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
         <button
           @click="triggerNotification('success')"
@@ -99,8 +116,10 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Custom Vibration Pattern</h3>
-      
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Custom Vibration Pattern
+      </h3>
+
       <div class="flex flex-col gap-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col gap-1">
@@ -124,7 +143,9 @@
         </div>
 
         <div class="flex flex-col gap-1">
-          <label class="text-xs font-medium text-text-secondary">Pattern Sequence (Comma-separated ms)</label>
+          <label class="text-xs font-medium text-text-secondary"
+            >Pattern Sequence (Comma-separated ms)</label
+          >
           <input
             v-model="vibrateForm.patternText"
             type="text"

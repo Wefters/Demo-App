@@ -8,7 +8,9 @@
     <!-- Quick Actions & Read Card -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Clipboard Operations</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Clipboard Operations
+        </h3>
         <div class="flex items-center gap-2">
           <button
             @click="readClipboard"
@@ -37,7 +39,9 @@
         </div>
         <div class="flex flex-col gap-1">
           <span class="text-[11px] text-text-tertiary">Clipboard Value</span>
-          <div class="p-2.5 bg-surface border border-border-subtle rounded-lg text-xs font-mono text-text-primary break-all min-h-9 flex items-center">
+          <div
+            class="p-2.5 bg-surface border border-border-subtle rounded-lg text-xs font-mono text-text-primary break-all min-h-9 flex items-center"
+          >
             {{ lastReadValue || '(empty or unread)' }}
           </div>
         </div>
@@ -46,7 +50,9 @@
 
     <!-- Write Clipboard Form -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Write to Clipboard</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Write to Clipboard
+      </h3>
 
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">

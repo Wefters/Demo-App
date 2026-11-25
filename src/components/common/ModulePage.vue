@@ -1,7 +1,9 @@
 <template>
   <div class="min-h-full p-5 flex flex-col gap-4 max-w-3xl mx-auto">
     <div class="flex items-center gap-4 p-4 bg-surface border border-border-subtle rounded-2xl">
-      <div class="w-13 h-13 flex items-center justify-center bg-accent-subtle text-accent rounded-xl shrink-0">
+      <div
+        class="w-13 h-13 flex items-center justify-center bg-accent-subtle text-accent rounded-xl shrink-0"
+      >
         <Icons :name="icon" :size="28" />
       </div>
       <div class="flex flex-col gap-0.5">
@@ -10,7 +12,9 @@
       </div>
     </div>
 
-    <div class="flex items-start gap-3 p-4 bg-info-bg border border-info-border rounded-xl text-info-text text-xs leading-relaxed">
+    <div
+      class="flex items-start gap-3 p-4 bg-info-bg border border-info-border rounded-xl text-info-text text-xs leading-relaxed"
+    >
       <Icons name="Info" :size="16" class="shrink-0 mt-0.5" />
       <span>{{ info }}</span>
     </div>

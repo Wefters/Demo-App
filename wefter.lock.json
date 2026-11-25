@@ -18,7 +18,7 @@
     },
     "scanner": {
       "resolved": "0.0.1",
-      "integrity": "sha256-65456dda126e6b9a32b464723d758d03c2ee5b8f82327cb1aac5bd66d97e523a"
+      "integrity": "sha256-95ac682eb005c77e0ba4c05270e986e74271f58c15c0a1dfad8984d998bdc1ca"
     },
     "secure-storage": {
       "resolved": "0.0.1",
@@ -61,5 +61,5 @@
       "integrity": "sha256-24f75c643f33d0581cf52eb1835e197efdf5d13cb3ab3e9453ddb8eb77ecca80"
     }
   },
-  "syncedAt": "2026-09-08T08:54:35.642Z"
+  "syncedAt": "2026-11-25T09:49:08.303Z"
 }

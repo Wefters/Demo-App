@@ -6,7 +6,9 @@
     info="Fast, unencrypted key-value store backed by Android SharedPreferences and iOS UserDefaults. Objects, arrays, and primitives are serialized to JSON automatically on the way in and parsed back into their original type on the way out."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Typed Value Presets</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Typed Value Presets
+      </h3>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="preset in presets"
@@ -22,7 +24,9 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0"
+        >
           <Icons name="Save" :size="18" />
         </div>
         <div>
@@ -70,7 +74,9 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0"
+        >
           <Icons name="Download" :size="18" />
         </div>
         <div>
@@ -103,7 +109,9 @@
           class="mt-2 p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-2"
         >
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1.5">
+            <span
+              class="text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1.5"
+            >
               <Icons name="KeyRound" :size="14" />
               Result (Key: {{ retrieved.key }})
             </span>
@@ -116,8 +124,11 @@
           <pre
             v-if="retrieved.value !== null"
             class="m-0 p-2.5 bg-surface rounded-lg font-mono text-xs text-text-primary whitespace-pre-wrap break-all"
-          >{{ retrieved.pretty }}</pre>
-          <div v-else class="p-2.5 bg-warning-bg/40 text-warning-text rounded-lg text-xs font-medium">
+            >{{ retrieved.pretty }}</pre>
+          <div
+            v-else
+            class="p-2.5 bg-warning-bg/40 text-warning-text rounded-lg text-xs font-medium"
+          >
             Key "{{ retrieved.key }}" was not found — value is null.
           </div>
         </div>
@@ -126,7 +137,9 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-danger-bg text-danger-text rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-danger-bg text-danger-text rounded-lg shrink-0"
+        >
           <Icons name="Trash2" :size="18" />
         </div>
         <div>
@@ -158,12 +171,16 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0"
+        >
           <Icons name="List" :size="18" />
         </div>
         <div>
           <h3 class="text-sm font-bold text-text-primary m-0">Namespace</h3>
-          <p class="text-xs text-text-tertiary m-0">List every key, or wipe the whole plugin namespace</p>
+          <p class="text-xs text-text-tertiary m-0">
+            List every key, or wipe the whole plugin namespace
+          </p>
         </div>
       </div>
 
@@ -192,7 +209,9 @@
         >
           {{ k }}
         </span>
-        <span v-if="knownKeys.length === 0" class="text-xs text-text-tertiary">Namespace is empty.</span>
+        <span v-if="knownKeys.length === 0" class="text-xs text-text-tertiary"
+          >Namespace is empty.</span
+        >
       </div>
     </div>
 
@@ -278,7 +297,10 @@ async function triggerSet() {
     const res = await Storage.set({ key: setForm.key, value })
     log(`Storage.set('${setForm.key}')`, 'success', { sent: value, result: res })
   } catch (err: any) {
-    log(`Storage.set('${setForm.key}')`, 'error', { error: err?.message || String(err), code: err?.code })
+    log(`Storage.set('${setForm.key}')`, 'error', {
+      error: err?.message || String(err),
+      code: err?.code,
+    })
   }
 }
 
@@ -289,11 +311,15 @@ async function triggerGet() {
     retrieved.done = true
     retrieved.key = getForm.key
     retrieved.value = res.value
-    retrieved.type = res.value === null ? 'null' : Array.isArray(res.value) ? 'array' : typeof res.value
+    retrieved.type =
+      res.value === null ? 'null' : Array.isArray(res.value) ? 'array' : typeof res.value
     retrieved.pretty = JSON.stringify(res.value, null, 2)
     log(`Storage.get('${getForm.key}')`, 'success', res)
   } catch (err: any) {
-    log(`Storage.get('${getForm.key}')`, 'error', { error: err?.message || String(err), code: err?.code })
+    log(`Storage.get('${getForm.key}')`, 'error', {
+      error: err?.message || String(err),
+      code: err?.code,
+    })
   }
 }
 
@@ -304,7 +330,10 @@ async function triggerRemove() {
     if (retrieved.key === removeForm.key) retrieved.done = false
     log(`Storage.remove('${removeForm.key}')`, 'success', res)
   } catch (err: any) {
-    log(`Storage.remove('${removeForm.key}')`, 'error', { error: err?.message || String(err), code: err?.code })
+    log(`Storage.remove('${removeForm.key}')`, 'error', {
+      error: err?.message || String(err),
+      code: err?.code,
+    })
   }
 }
 

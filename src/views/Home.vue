@@ -68,6 +68,11 @@ const modules = [
   },
   { name: 'Storage', icon: 'Database', route: '/storage', desc: 'Unencrypted key-value + JSON' },
   { name: 'Share', icon: 'Share2', route: '/share', desc: 'Native share sheet' },
-  { name: 'Dev Tools', icon: 'Wrench', route: '/dev-tools', desc: 'Bridge inspector & error testing' },
+  {
+    name: 'Dev Tools',
+    icon: 'Wrench',
+    route: '/dev-tools',
+    desc: 'Bridge inspector & error testing',
+  },
 ]
 </script>

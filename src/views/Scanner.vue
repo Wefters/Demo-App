@@ -6,7 +6,9 @@
     info="High-performance CameraX and Google ML Kit powered 1D/2D scanner with continuous mode, photo picker decoding, zoom gestures, and vibration feedback."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Camera Scan Configuration</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Camera Scan Configuration
+      </h3>
 
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">
@@ -27,7 +29,11 @@
               :key="fmt"
               @click="toggleFormat(fmt)"
               class="px-2.5 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer border"
-              :class="scanOptions.formats.includes(fmt) ? 'bg-accent text-white border-accent' : 'bg-surface-raised text-text-secondary border-border-subtle hover:bg-border-subtle'"
+              :class="
+                scanOptions.formats.includes(fmt)
+                  ? 'bg-accent text-white border-accent'
+                  : 'bg-surface-raised text-text-secondary border-border-subtle hover:bg-border-subtle'
+              "
             >
               {{ fmt }}
             </button>
@@ -51,7 +57,9 @@
           </div>
 
           <div class="flex flex-col gap-1">
-            <label class="text-xs font-medium text-text-secondary">Auto Timeout (Seconds, 0 = Never)</label>
+            <label class="text-xs font-medium text-text-secondary"
+              >Auto Timeout (Seconds, 0 = Never)</label
+            >
             <input
               v-model.number="scanOptions.timeout"
               type="number"
@@ -78,7 +86,11 @@
             <span>Continuous</span>
           </label>
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
-            <input type="checkbox" v-model="scanOptions.allowGallery" class="rounded accent-accent" />
+            <input
+              type="checkbox"
+              v-model="scanOptions.allowGallery"
+              class="rounded accent-accent"
+            />
             <span>Photo Gallery</span>
           </label>
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
@@ -90,7 +102,11 @@
             <span>Tap to Focus</span>
           </label>
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
-            <input type="checkbox" v-model="scanOptions.zoomControl" class="rounded accent-accent" />
+            <input
+              type="checkbox"
+              v-model="scanOptions.zoomControl"
+              class="rounded accent-accent"
+            />
             <span>Zoom Control</span>
           </label>
         </div>
@@ -114,9 +130,14 @@
       </div>
     </div>
 
-    <div v-if="lastScannedCode" class="p-4 bg-success-bg/40 border border-success-border rounded-2xl flex flex-col gap-2">
+    <div
+      v-if="lastScannedCode"
+      class="p-4 bg-success-bg/40 border border-success-border rounded-2xl flex flex-col gap-2"
+    >
       <div class="flex items-center justify-between">
-        <span class="text-xs font-bold text-success uppercase tracking-wider flex items-center gap-1.5">
+        <span
+          class="text-xs font-bold text-success uppercase tracking-wider flex items-center gap-1.5"
+        >
           <Icons name="CheckCircle2" :size="16" />
           Last Scanned Code
         </span>
@@ -131,7 +152,9 @@
         {{ lastScannedCode.data }}
       </div>
       <div class="flex items-center justify-between text-[11px] text-text-tertiary">
-        <span>Format: <strong class="text-accent uppercase">{{ lastScannedCode.format }}</strong></span>
+        <span
+          >Format: <strong class="text-accent uppercase">{{ lastScannedCode.format }}</strong></span
+        >
         <span>Time: {{ lastScannedCode.timestamp }}</span>
       </div>
     </div>
@@ -149,7 +172,16 @@ import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseCon
 import EventLogger, { type EventItem } from '@/components/showcase/EventLogger.vue'
 import Icons from '@/components/common/Icons.vue'
 
-const availableFormats: BarcodeFormat[] = ['qr', 'ean13', 'ean8', 'code128', 'code39', 'upca', 'upce', 'all']
+const availableFormats: BarcodeFormat[] = [
+  'qr',
+  'ean13',
+  'ean8',
+  'code128',
+  'code39',
+  'upca',
+  'upce',
+  'all',
+]
 
 const scanOptions = reactive({
   prompt: 'Align QR or Barcode inside camera viewfinder',

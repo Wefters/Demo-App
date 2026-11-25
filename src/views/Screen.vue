@@ -8,7 +8,9 @@
     <!-- Screen Brightness Control Card -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Screen Brightness</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Screen Brightness
+        </h3>
         <button
           @click="fetchBrightness"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -68,16 +70,24 @@
       <!-- Keep Awake -->
       <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Screen Wake Lock</h3>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+            Screen Wake Lock
+          </h3>
           <span
             class="px-2 py-0.5 text-[11px] font-semibold rounded-full"
-            :class="isAwake ? 'bg-success-bg text-success border border-success/20' : 'bg-surface-raised text-text-muted'"
+            :class="
+              isAwake
+                ? 'bg-success-bg text-success border border-success/20'
+                : 'bg-surface-raised text-text-muted'
+            "
           >
             {{ isAwake ? 'KEEP AWAKE ACTIVE' : 'SLEEP ALLOWED' }}
           </span>
         </div>
 
-        <p class="text-xs text-text-tertiary m-0">Prevent display dimming or turning off automatically while app is active.</p>
+        <p class="text-xs text-text-tertiary m-0">
+          Prevent display dimming or turning off automatically while app is active.
+        </p>
 
         <div class="grid grid-cols-2 gap-2 pt-1">
           <button
@@ -101,7 +111,9 @@
       <!-- Orientation Lock -->
       <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Orientation</h3>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+            Orientation
+          </h3>
           <button
             @click="fetchOrientation"
             class="p-1 hover:bg-surface-raised rounded-lg text-accent cursor-pointer"
@@ -110,7 +122,9 @@
           </button>
         </div>
 
-        <div class="p-2.5 bg-surface-raised border border-border-subtle rounded-xl flex items-center justify-between">
+        <div
+          class="p-2.5 bg-surface-raised border border-border-subtle rounded-xl flex items-center justify-between"
+        >
           <span class="text-xs text-text-tertiary">Current</span>
           <span class="text-xs font-bold text-accent font-mono uppercase">{{ orientation }}</span>
         </div>

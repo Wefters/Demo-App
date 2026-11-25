@@ -6,7 +6,9 @@
     info="Platform-native alerts, confirm modals, single & multi-line text input prompts, and Android Toast / iOS Banner notifications."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Native Alert Dialog</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Native Alert Dialog
+      </h3>
       <div class="flex flex-col gap-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col gap-1">
@@ -48,7 +50,9 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Native Confirmation Modal</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Native Confirmation Modal
+      </h3>
       <div class="flex flex-col gap-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col gap-1">
@@ -101,7 +105,9 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Native Input Prompt</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Native Input Prompt
+      </h3>
       <div class="flex flex-col gap-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col gap-1">
@@ -192,7 +198,9 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Native Toast Notification</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Native Toast Notification
+      </h3>
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">
           <label class="text-xs font-medium text-text-secondary">Toast Message</label>
@@ -375,7 +383,8 @@ async function triggerToast() {
   try {
     const res = await Dialog.toast({
       text: toastForm.text,
-      duration: toastForm.durationMode === 'custom' ? toastForm.customDuration : toastForm.durationMode,
+      duration:
+        toastForm.durationMode === 'custom' ? toastForm.customDuration : toastForm.durationMode,
       position: toastForm.position,
     })
     logs.value.unshift({

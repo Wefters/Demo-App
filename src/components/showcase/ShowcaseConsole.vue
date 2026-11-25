@@ -3,7 +3,9 @@
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-2">
         <Icons name="Terminal" :size="16" class="text-accent" />
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Output Console</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Output Console
+        </h3>
       </div>
       <div class="flex items-center gap-1">
         <button
@@ -32,16 +34,25 @@
         v-for="(log, idx) in logs"
         :key="idx"
         class="p-3 rounded-xl border flex flex-col gap-1.5"
-        :class="log.status === 'success' ? 'bg-success-bg/30 border-success-border/50 text-text-primary' : 'bg-danger-bg/30 border-danger-border/50 text-text-primary'"
+        :class="
+          log.status === 'success'
+            ? 'bg-success-bg/30 border-success-border/50 text-text-primary'
+            : 'bg-danger-bg/30 border-danger-border/50 text-text-primary'
+        "
       >
         <div class="flex items-center justify-between text-[11px]">
-          <span class="font-bold flex items-center gap-1.5" :class="log.status === 'success' ? 'text-success' : 'text-danger-text'">
+          <span
+            class="font-bold flex items-center gap-1.5"
+            :class="log.status === 'success' ? 'text-success' : 'text-danger-text'"
+          >
             <Icons :name="log.status === 'success' ? 'CheckCircle2' : 'AlertCircle'" :size="13" />
             {{ log.method }}
           </span>
           <span class="text-text-tertiary text-[10px]">{{ log.timestamp }}</span>
         </div>
-        <pre class="m-0 text-[11px] leading-relaxed whitespace-pre-wrap break-all text-text-secondary">{{ JSON.stringify(log.data, null, 2) }}</pre>
+        <pre
+          class="m-0 text-[11px] leading-relaxed whitespace-pre-wrap break-all text-text-secondary"
+          >{{ JSON.stringify(log.data, null, 2) }}</pre>
       </div>
     </div>
   </div>

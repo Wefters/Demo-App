@@ -7,7 +7,9 @@
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Torch Dashboard</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Torch Dashboard
+        </h3>
         <button
           @click="checkAvailability"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -18,26 +20,41 @@
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Torch Status</span>
           <div class="flex items-center gap-2">
-            <div class="w-3 h-3 rounded-full" :class="state.on ? 'bg-warning shadow-[0_0_10px_#f59e0b]' : 'bg-text-tertiary'"></div>
-            <span class="text-sm font-bold uppercase" :class="state.on ? 'text-warning' : 'text-text-secondary'">
+            <div
+              class="w-3 h-3 rounded-full"
+              :class="state.on ? 'bg-warning shadow-[0_0_10px_#f59e0b]' : 'bg-text-tertiary'"
+            ></div>
+            <span
+              class="text-sm font-bold uppercase"
+              :class="state.on ? 'text-warning' : 'text-text-secondary'"
+            >
               {{ state.on ? 'ACTIVE (ON)' : 'OFF' }}
             </span>
           </div>
         </div>
 
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Torch Strength</span>
           <span class="text-sm font-bold text-accent font-mono">
             {{ (state.level * 100).toFixed(0) }}%
           </span>
         </div>
 
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1 col-span-2 sm:col-span-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1 col-span-2 sm:col-span-1"
+        >
           <span class="text-[11px] text-text-tertiary">Variable Strength</span>
-          <span class="text-sm font-bold" :class="availability?.variableStrengthSupported ? 'text-success' : 'text-text-muted'">
+          <span
+            class="text-sm font-bold"
+            :class="availability?.variableStrengthSupported ? 'text-success' : 'text-text-muted'"
+          >
             {{ availability?.variableStrengthSupported ? 'SUPPORTED' : 'FIXED ON/OFF' }}
           </span>
         </div>
@@ -97,7 +114,11 @@
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
-import { FlashLight, type FlashlightAvailability, type FlashlightState } from '@wefterjs/flash-light'
+import {
+  FlashLight,
+  type FlashlightAvailability,
+  type FlashlightState,
+} from '@wefterjs/flash-light'
 import ModulePage from '@/components/common/ModulePage.vue'
 import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseConsole.vue'
 import EventLogger, { type EventItem } from '@/components/showcase/EventLogger.vue'

@@ -21,6 +21,8 @@ export default defineConfig({
     }
   },
   resolve: {
+    // One @wefterjs/core for the whole app: each linked plugin otherwise brings its own copy.
+    dedupe: ['@wefterjs/core'],
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },

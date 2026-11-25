@@ -8,7 +8,9 @@
     <!-- Share Capability Status -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Native Capability</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Native Capability
+        </h3>
         <button
           @click="checkCapability"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -18,9 +20,14 @@
         </button>
       </div>
 
-      <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex items-center justify-between">
+      <div
+        class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex items-center justify-between"
+      >
         <span class="text-xs text-text-tertiary font-medium">Native Share Dialog Available</span>
-        <span class="text-xs font-bold font-mono" :class="canShareValue ? 'text-success' : 'text-warning-text'">
+        <span
+          class="text-xs font-bold font-mono"
+          :class="canShareValue ? 'text-success' : 'text-warning-text'"
+        >
           {{ canShareValue ? 'SUPPORTED' : 'LIMITED / FALLBACK' }}
         </span>
       </div>

@@ -10,5 +10,9 @@ const app = useApp()
 
 onMounted(() => {
   app.initTheme()
+
+  fetch('https://api.ipify.org?format=json')
+    .then((response) => response.json())
+    .then((data) => {})
 })
 </script>

@@ -6,7 +6,9 @@
     info="Launch native SFSafariViewController on iOS or Chrome Custom Tabs on Android with custom toolbars and secure OAuth deep linking."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Standard Browser Session</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Standard Browser Session
+      </h3>
 
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">
@@ -54,19 +56,35 @@
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
-            <input type="checkbox" v-model="openOptions.showToolbar" class="rounded accent-accent" />
+            <input
+              type="checkbox"
+              v-model="openOptions.showToolbar"
+              class="rounded accent-accent"
+            />
             <span>Show Toolbar</span>
           </label>
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
-            <input type="checkbox" v-model="openOptions.showNavigationButtons" class="rounded accent-accent" />
+            <input
+              type="checkbox"
+              v-model="openOptions.showNavigationButtons"
+              class="rounded accent-accent"
+            />
             <span>Nav Buttons</span>
           </label>
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
-            <input type="checkbox" v-model="openOptions.shareButton" class="rounded accent-accent" />
+            <input
+              type="checkbox"
+              v-model="openOptions.shareButton"
+              class="rounded accent-accent"
+            />
             <span>Share Button</span>
           </label>
           <label class="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
-            <input type="checkbox" v-model="openOptions.desktopMode" class="rounded accent-accent" />
+            <input
+              type="checkbox"
+              v-model="openOptions.desktopMode"
+              class="rounded accent-accent"
+            />
             <span>Desktop Mode</span>
           </label>
         </div>
@@ -91,7 +109,9 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">OAuth Authentication Session</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        OAuth Authentication Session
+      </h3>
 
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">

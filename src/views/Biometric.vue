@@ -7,7 +7,9 @@
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Hardware Status</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Hardware Status
+        </h3>
         <button
           @click="checkAvailability"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -18,13 +20,22 @@
       </div>
 
       <div class="grid grid-cols-2 gap-3">
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Hardware Available</span>
-          <span class="text-sm font-bold" :class="availability?.available ? 'text-success' : 'text-danger-text'">
-            {{ availability ? (availability.available ? 'AVAILABLE' : 'UNAVAILABLE') : 'CHECKING...' }}
+          <span
+            class="text-sm font-bold"
+            :class="availability?.available ? 'text-success' : 'text-danger-text'"
+          >
+            {{
+              availability ? (availability.available ? 'AVAILABLE' : 'UNAVAILABLE') : 'CHECKING...'
+            }}
           </span>
         </div>
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Biometry Type</span>
           <span class="text-sm font-bold text-accent font-mono uppercase">
             {{ availability?.biometryType || 'UNKNOWN' }}
@@ -32,7 +43,10 @@
         </div>
       </div>
 
-      <div v-if="availability?.message" class="p-3 bg-warning-bg border border-warning-border rounded-xl text-warning-text text-xs">
+      <div
+        v-if="availability?.message"
+        class="p-3 bg-warning-bg border border-warning-border rounded-xl text-warning-text text-xs"
+      >
         {{ availability.message }} (Code: {{ availability.code }})
       </div>
 
@@ -48,7 +62,9 @@
     </div>
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Authentication Options</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Authentication Options
+      </h3>
 
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1">

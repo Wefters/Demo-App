@@ -8,7 +8,9 @@
     <!-- Build metadata -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Build Metadata</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Build Metadata
+        </h3>
         <button
           @click="loadInfo"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -25,7 +27,9 @@
           class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
         >
           <span class="text-[11px] text-text-tertiary">{{ field.label }}</span>
-          <span class="text-sm font-bold text-text-primary font-mono break-all">{{ field.value }}</span>
+          <span class="text-sm font-bold text-text-primary font-mono break-all">{{
+            field.value
+          }}</span>
         </div>
       </div>
       <p v-else class="text-xs text-text-tertiary m-0">Not loaded yet.</p>
@@ -34,7 +38,9 @@
     <!-- Lifecycle state -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Lifecycle State</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Lifecycle State
+        </h3>
         <button
           @click="loadState"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -57,8 +63,9 @@
         </span>
       </div>
       <p class="text-[11px] text-text-tertiary m-0">
-        Listening on <span class="font-mono">app:stateChange</span> — background the app and return to
-        see <span class="font-mono">active / inactive / background</span> transitions logged below.
+        Listening on <span class="font-mono">app:stateChange</span> — background the app and return
+        to see <span class="font-mono">active / inactive / background</span> transitions logged
+        below.
       </p>
     </div>
 
@@ -192,8 +199,9 @@
         <h3 class="text-sm font-bold text-text-primary m-0">Process Control</h3>
         <p class="text-xs text-text-tertiary m-0">
           Android: minimize → background, exit → finish + kill process, relaunch → cold restart.
-          iOS: <span class="font-mono">minimizeApp</span> / <span class="font-mono">relaunchApp</span>
-          reject; <span class="font-mono">exitApp</span> calls <span class="font-mono">exit(0)</span>.
+          iOS: <span class="font-mono">minimizeApp</span> /
+          <span class="font-mono">relaunchApp</span> reject;
+          <span class="font-mono">exitApp</span> calls <span class="font-mono">exit(0)</span>.
         </p>
       </div>
       <div class="flex flex-wrap gap-2">
@@ -260,8 +268,14 @@ const infoFields = computed(() => {
     { label: 'version', value: i.version },
     { label: 'build', value: i.build },
     { label: 'debug', value: String(i.debug) },
-    { label: 'firstInstallTime', value: i.firstInstallTime ? new Date(i.firstInstallTime).toLocaleString() : '—' },
-    { label: 'lastUpdateTime', value: i.lastUpdateTime ? new Date(i.lastUpdateTime).toLocaleString() : '—' },
+    {
+      label: 'firstInstallTime',
+      value: i.firstInstallTime ? new Date(i.firstInstallTime).toLocaleString() : '—',
+    },
+    {
+      label: 'lastUpdateTime',
+      value: i.lastUpdateTime ? new Date(i.lastUpdateTime).toLocaleString() : '—',
+    },
   ]
 })
 

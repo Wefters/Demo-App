@@ -8,7 +8,9 @@
     <!-- Connectivity Overview -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Network Status</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Network Status
+        </h3>
         <button
           @click="checkStatus"
           class="flex items-center gap-1.5 px-3 py-1.5 bg-accent-subtle hover:bg-accent/20 text-accent text-xs font-semibold rounded-xl transition-colors cursor-pointer"
@@ -19,20 +21,27 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Connectivity State</span>
           <div class="flex items-center gap-2">
             <span
               class="w-2.5 h-2.5 rounded-full"
               :class="status?.connected ? 'bg-success animate-pulse' : 'bg-danger-bg'"
             />
-            <span class="text-sm font-bold" :class="status?.connected ? 'text-success' : 'text-danger-text'">
+            <span
+              class="text-sm font-bold"
+              :class="status?.connected ? 'text-success' : 'text-danger-text'"
+            >
               {{ status ? (status.connected ? 'ONLINE' : 'OFFLINE') : 'CHECKING...' }}
             </span>
           </div>
         </div>
 
-        <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1">
+        <div
+          class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
+        >
           <span class="text-[11px] text-text-tertiary">Connection Transport</span>
           <span class="text-sm font-bold text-accent font-mono uppercase">
             {{ status?.connectionType || 'UNKNOWN' }}
@@ -45,12 +54,20 @@
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <div class="flex flex-col gap-0.5">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Real-Time Event Listener</h3>
-          <span class="text-[11px] text-text-tertiary">Listen for 'network:changed' events sent by native framework</span>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+            Real-Time Event Listener
+          </h3>
+          <span class="text-[11px] text-text-tertiary"
+            >Listen for 'network:changed' events sent by native framework</span
+          >
         </div>
         <span
           class="px-2.5 py-1 text-xs font-semibold rounded-full"
-          :class="isListening ? 'bg-accent-subtle text-accent border border-accent/20' : 'bg-surface-raised text-text-muted'"
+          :class="
+            isListening
+              ? 'bg-accent-subtle text-accent border border-accent/20'
+              : 'bg-surface-raised text-text-muted'
+          "
         >
           {{ isListening ? 'ACTIVE' : 'INACTIVE' }}
         </span>
@@ -60,7 +77,11 @@
         <button
           @click="toggleListener"
           class="py-2.5 font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
-          :class="isListening ? 'bg-danger-subtle hover:bg-danger-bg/40 text-danger-text' : 'bg-accent hover:bg-accent-bright text-white'"
+          :class="
+            isListening
+              ? 'bg-danger-subtle hover:bg-danger-bg/40 text-danger-text'
+              : 'bg-accent hover:bg-accent-bright text-white'
+          "
         >
           <Icons :name="isListening ? 'WifiOff' : 'Radio'" :size="16" />
           <span>{{ isListening ? 'Stop Listening' : 'Start Listening' }}</span>
@@ -168,7 +189,9 @@ function simulateEvent() {
     'unknown',
     'none',
   ]
-  const randomType = types[Math.floor(Math.random() * types.length)] as NetworkStatus['connectionType']
+  const randomType = types[
+    Math.floor(Math.random() * types.length)
+  ] as NetworkStatus['connectionType']
   const simStatus: NetworkStatus = {
     connected: randomType !== 'none',
     connectionType: randomType,

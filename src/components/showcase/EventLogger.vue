@@ -4,7 +4,9 @@
       <div class="flex items-center gap-2">
         <div class="w-2 h-2 rounded-full bg-success animate-pulse"></div>
         <Icons name="Radio" :size="16" class="text-accent" />
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Native Event Stream</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+          Native Event Stream
+        </h3>
       </div>
       <button
         v-if="events.length > 0"
@@ -32,7 +34,9 @@
           </span>
           <span class="text-text-tertiary text-[10px]">{{ ev.timestamp }}</span>
         </div>
-        <pre class="m-0 text-[11px] leading-relaxed whitespace-pre-wrap break-all text-text-secondary">{{ JSON.stringify(ev.payload, null, 2) }}</pre>
+        <pre
+          class="m-0 text-[11px] leading-relaxed whitespace-pre-wrap break-all text-text-secondary"
+          >{{ JSON.stringify(ev.payload, null, 2) }}</pre>
       </div>
     </div>
   </div>

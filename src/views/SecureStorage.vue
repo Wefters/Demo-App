@@ -6,7 +6,9 @@
     info="Hardware-backed encrypted key-value vault utilizing Android EncryptedSharedPreferences (AES-256 GCM) and iOS Keychain Services."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Quick Preset Key Templates</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
+        Quick Preset Key Templates
+      </h3>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="preset in presets"
@@ -22,12 +24,16 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0"
+        >
           <Icons name="Lock" :size="18" />
         </div>
         <div>
           <h3 class="text-sm font-bold text-text-primary m-0">Set Token</h3>
-          <p class="text-xs text-text-tertiary m-0">Encrypt and store a secret key-value token in hardware vault</p>
+          <p class="text-xs text-text-tertiary m-0">
+            Encrypt and store a secret key-value token in hardware vault
+          </p>
         </div>
       </div>
 
@@ -64,12 +70,16 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-accent-subtle text-accent rounded-lg shrink-0"
+        >
           <Icons name="Unlock" :size="18" />
         </div>
         <div>
           <h3 class="text-sm font-bold text-text-primary m-0">Get Token</h3>
-          <p class="text-xs text-text-tertiary m-0">Retrieve and decrypt a stored token using key name only</p>
+          <p class="text-xs text-text-tertiary m-0">
+            Retrieve and decrypt a stored token using key name only
+          </p>
         </div>
       </div>
 
@@ -92,9 +102,14 @@
           <span>Get Token (Retrieve & Decrypt)</span>
         </button>
 
-        <div v-if="getRetrievedState !== null" class="mt-2 p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-2">
+        <div
+          v-if="getRetrievedState !== null"
+          class="mt-2 p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-2"
+        >
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1.5">
+            <span
+              class="text-xs font-bold text-accent uppercase tracking-wider flex items-center gap-1.5"
+            >
               <Icons name="KeyRound" :size="14" />
               Retrieved Result (Key: {{ getRetrievedKey }})
             </span>
@@ -106,10 +121,16 @@
               Copy Value
             </button>
           </div>
-          <div v-if="getRetrievedState" class="p-2.5 bg-surface rounded-lg font-mono text-xs text-text-primary break-all">
+          <div
+            v-if="getRetrievedState"
+            class="p-2.5 bg-surface rounded-lg font-mono text-xs text-text-primary break-all"
+          >
             {{ getRetrievedState }}
           </div>
-          <div v-else class="p-2.5 bg-warning-bg/40 text-warning-text rounded-lg text-xs font-medium">
+          <div
+            v-else
+            class="p-2.5 bg-warning-bg/40 text-warning-text rounded-lg text-xs font-medium"
+          >
             Token key "{{ getRetrievedKey }}" was not found or is null.
           </div>
         </div>
@@ -118,12 +139,16 @@
 
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-8 h-8 flex items-center justify-center bg-danger-bg text-danger-text rounded-lg shrink-0">
+        <div
+          class="w-8 h-8 flex items-center justify-center bg-danger-bg text-danger-text rounded-lg shrink-0"
+        >
           <Icons name="Trash2" :size="18" />
         </div>
         <div>
           <h3 class="text-sm font-bold text-text-primary m-0">Delete Token</h3>
-          <p class="text-xs text-text-tertiary m-0">Permanently delete a stored token using key name only</p>
+          <p class="text-xs text-text-tertiary m-0">
+            Permanently delete a stored token using key name only
+          </p>
         </div>
       </div>
 
