@@ -1,8 +1,8 @@
 <template>
-  <div class="relative flex flex-col h-screen overflow-hidden bg-bg">
+  <div class="relative flex flex-col h-dvh overflow-hidden bg-bg">
     <Sidebar />
     <Header />
-    <main class="flex-1 overflow-y-auto">
+    <main class="flex-1 overflow-y-auto overscroll-contain">
       <RouterView />
     </main>
     <Footer />

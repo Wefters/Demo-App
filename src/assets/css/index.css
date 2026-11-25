@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+/* The app scrolls inside its own containers; the page itself never scrolls or rubber-bands. */
+html,
+body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
