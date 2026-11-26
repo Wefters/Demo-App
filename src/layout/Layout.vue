@@ -2,7 +2,7 @@
   <div class="relative flex flex-col h-dvh overflow-hidden bg-bg">
     <Sidebar />
     <Header />
-    <main class="flex-1 overflow-y-auto overscroll-contain">
+    <main class="main-container flex-1 overflow-y-auto overscroll-contain">
       <RouterView />
     </main>
     <Footer />

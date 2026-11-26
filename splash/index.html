@@ -1,0 +1,19 @@
+<!doctype html>
+<!--
+  Splash screen of the Wefter demo app, shown in its own web view while the app loads.
+  It closes when the app calls hideSplash() (see src/core/splash.ts), or after splash.maxDuration.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="splash">
+      <img src="./mark.svg" alt="" class="mark" />
+      <p class="name">Wefter Demo</p>
+      <div class="progress" role="progressbar" aria-label="Loading"><span></span></div>
+    </main>
+  </body>
+</html>

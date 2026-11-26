@@ -26,6 +26,13 @@
     }
   },
   "launchBackground": "#111314",
+  "splash": {
+    "source": "splash",
+    "minDuration": 800,
+    "maxDuration": 5000,
+    "dismissOn": "ready",
+    "transition": "fade"
+  },
   "deepLinks": {
     "schemes": ["wefterdemo"]
   }

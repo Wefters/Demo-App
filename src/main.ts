@@ -9,6 +9,7 @@ import App from './App.vue'
 import router from './router'
 import { installDeepLinkRouting } from './core/deep-links'
 import { installTapToDismissKeyboard } from './core/keyboard'
+import { hideSplashWhenReady } from './core/splash'
 
 const app = createApp(App)
 
@@ -32,3 +33,4 @@ installDeepLinkRouting(router)
 installTapToDismissKeyboard()
 
 app.mount('#app')
+hideSplashWhenReady(router)

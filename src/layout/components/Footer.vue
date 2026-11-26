@@ -1,5 +1,5 @@
 <template>
-  <div class="bottom-0 w-full px-5 bg-bg-dots bottom-offset">
+  <div class="bottom-0 w-full px-2 bg-bg-dots bottom-offset">
     <div class="w-[70%] flex justify-between items-center mx-auto">
       <RouterLink
         v-for="item in navItems"

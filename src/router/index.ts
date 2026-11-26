@@ -1,3 +1,4 @@
+import { nextTick } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 /**
@@ -129,6 +130,16 @@ const router = createRouter({
       ],
     },
   ],
+})
+
+router.afterEach(async (to, from, failure) => {
+  await nextTick();
+
+  document.querySelector('.main-container')?.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant',
+  })
 })
 
 export default router

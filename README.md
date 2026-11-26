@@ -117,7 +117,8 @@ The application is configured through `wefter.config.json` at the root of `Demo-
 - `webDir`: Build output directory (`dist`).
 - `environments.development.appId`: Application ID (`dev.sandip.wefter.demo`).
 - `environments.development.appName`: Application display name (`Wefter Demo`).
-- `launchBackground`: Splash and background color (`#111314`).
+- `launchBackground`: Color of the native launch screen (`#111314`).
+- `splash`: The HTML splash screen in `splash/`, shown while the app loads. It stays at least 800 ms, closes when the first screen has rendered (`src/core/splash.ts` calls `hideSplash()`), and closes by itself after 5 seconds if the app never gets there.
 - `deepLinks.schemes`: The `wefterdemo://` scheme. Links such as `wefterdemo://backend` open the matching screen (`src/core/deep-links.ts`).
 
 ## License
