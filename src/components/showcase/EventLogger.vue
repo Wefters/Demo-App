@@ -43,8 +43,11 @@
 </template>
 
 <script setup lang="ts">
+/** Lists events a plugin emitted, newest first, with a button to clear them. */
+
 import Icons from '@/components/common/Icons.vue'
 
+/** An event received from a plugin. */
 export interface EventItem {
   name: string
   payload: any

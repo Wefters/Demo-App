@@ -2,64 +2,64 @@
   "plugins": {
     "app": {
       "resolved": "0.0.1",
-      "integrity": "sha256-2f035ca684b7ba5535abc01b4c2f24f44079305c86f43a05e79fd01c5ebaa263"
+      "integrity": "sha256-c11b95ca6b09753e96a2a12d9f1781e088251ab3d25868e4e6726c77ab1875fc"
     },
     "biometric": {
       "resolved": "0.0.1",
-      "integrity": "sha256-aa078a062805b257b80919c0bdd1794bb00c4ec2fd4b3e29acb701838d67416a"
+      "integrity": "sha256-5d1440d68cc7b5fa50043648b75eaa4f1731b502a1f6347a340bc340d223d278"
     },
     "browser": {
       "resolved": "0.0.1",
-      "integrity": "sha256-9c440055cab534d74358d65942ad21a5f18ef052a28254b130b0608b79403a0c"
+      "integrity": "sha256-344e5affdac03632f042f77a79d3ed2aaa6cbef8591776167ba2ecd457ed9c40"
     },
     "flash-light": {
       "resolved": "0.0.3",
-      "integrity": "sha256-18f19f0337a9c16036303929541d12be2b889d18be0a5a262fbd96ccdcf6300b"
+      "integrity": "sha256-0ae9c28716837f8be1aa8aa7eab6b149884dc28b932a869182a1775318def233"
     },
     "scanner": {
       "resolved": "0.0.1",
-      "integrity": "sha256-95ac682eb005c77e0ba4c05270e986e74271f58c15c0a1dfad8984d998bdc1ca"
+      "integrity": "sha256-5a3e44303c86339d41c98d1fdf4685a5048bb86e07cf48a54f609e038c3bcfa1"
     },
     "secure-storage": {
       "resolved": "0.0.1",
-      "integrity": "sha256-f82bd4b6f3bf92909c5ce5ce94e083f6d8fc220744cacef2c30014b1cdc313ca"
+      "integrity": "sha256-7f0df79f0bd7104bea7133b99d3f880e338b95eb96a22fb20e1b517b328a0619"
     },
     "storage": {
       "resolved": "0.0.1",
-      "integrity": "sha256-8ad4c40c5adc125c84a650340e0c81179ba0a342aee1286212c808b082e9f8fd"
+      "integrity": "sha256-e375d3c064a7fb1669930ed9653a319b06e18aaccf59910b0e267b693ad7e87f"
     },
     "haptics": {
       "resolved": "0.0.1",
-      "integrity": "sha256-e9bffb30a8888155a5cfd38785ce44fcf4c690a79692ce6a6a2bf862e19fa5a0"
+      "integrity": "sha256-027497e24032e7813a27d18e94c992d22e1909af97bef4ed392877056a095921"
     },
     "dialog": {
       "resolved": "0.0.1",
-      "integrity": "sha256-aa08a3616f527e5213923a26a97215fc4de872361f8aaa052826ddf6bbd007f7"
+      "integrity": "sha256-16d8b1f8a4be57a665a167078b631beafb2dba5f989627c6baad81a4badfd1f8"
     },
     "network": {
       "resolved": "0.0.2",
-      "integrity": "sha256-b76aa0758480f0c94fcfed1ae32bb251d2051c77ff8c963b9c3e4a104c09efeb"
+      "integrity": "sha256-d6e0630e0f0e16d51f00baa3b8df63887a470bec0e0a167bc6668a5c661397c9"
     },
     "clipboard": {
       "resolved": "0.0.1",
-      "integrity": "sha256-418f8ab89cdca1f5b326acd027817a2d80a71dbae74a83b017ed4b12cf9ab43e"
+      "integrity": "sha256-c5de47882ce015e64fac20cd383b309066672b0f8769b2b6832fc5040503fe44"
     },
     "device": {
       "resolved": "0.0.2",
-      "integrity": "sha256-0cc889fb3dfe02da3e0cd046337be291638e9cfc922ba4d34d4339a5ea78cfe8"
+      "integrity": "sha256-2e3483230c2eae6154eeed705ff06ee774d9dcecbdc121f38e5408bf87481e78"
     },
     "screen": {
       "resolved": "0.0.2",
-      "integrity": "sha256-df6d6ef656695d3c98ccd55ca27a236fe0137286fc3352ffdef7dcb449abf5fe"
+      "integrity": "sha256-7c3665062edf6ce754e6045ea16299ad898b0bfdc0a0e5ca1c7a9d800e6bef3a"
     },
     "share": {
       "resolved": "0.0.2",
-      "integrity": "sha256-d2f89dab886ba18a2ebd423c3f95414fe276eb202c34a56d2a5f4ea4cb1f4501"
+      "integrity": "sha256-7194f5119b326fb74150f5ad450038909c5a8f7d7ea2f3a8c5689bd16880dd5f"
     },
     "error-test": {
       "resolved": "0.0.1",
-      "integrity": "sha256-24f75c643f33d0581cf52eb1835e197efdf5d13cb3ab3e9453ddb8eb77ecca80"
+      "integrity": "sha256-467348230878cec314b1620dfccb0cd11b62fdb241cc0d7180ac1c10ea7f4fb3"
     }
   },
-  "syncedAt": "2026-11-25T09:49:08.303Z"
+  "syncedAt": "2026-11-25T15:03:38.034Z"
 }

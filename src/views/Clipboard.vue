@@ -5,7 +5,6 @@
     desc="@wefterjs/clipboard v0.0.1"
     info="Read, write, and manage system clipboard data including text strings, URLs, and labels across platforms."
   >
-    <!-- Quick Actions & Read Card -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -29,7 +28,6 @@
         </div>
       </div>
 
-      <!-- Current Clipboard State -->
       <div class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-2">
         <div class="flex items-center justify-between">
           <span class="text-[11px] text-text-tertiary">Current Content Type</span>
@@ -48,7 +46,6 @@
       </div>
     </div>
 
-    <!-- Write Clipboard Form -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
         Write to Clipboard
@@ -112,6 +109,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/clipboard`: reads, writes and clears the system clipboard. */
+
 import { ref, onMounted } from 'vue'
 import { Clipboard } from '@wefterjs/clipboard'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -126,10 +125,12 @@ const writeUrl = ref('')
 const writeLabel = ref('Wefter Note')
 const logs = ref<LogItem[]>([])
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Reads the clipboard and shows its content and type. */
 async function readClipboard() {
   try {
     const res = await Clipboard.read()
@@ -151,6 +152,7 @@ async function readClipboard() {
   }
 }
 
+/** Writes the entered text or URL to the clipboard. */
 async function writeClipboard() {
   loading.value = true
   try {
@@ -178,12 +180,14 @@ async function writeClipboard() {
   }
 }
 
+/** Copies a predefined snippet. */
 async function copyQuickSnippet(val: string) {
   writeText.value = val
   writeUrl.value = val
   await writeClipboard()
 }
 
+/** Empties the clipboard. */
 async function clearClipboard() {
   try {
     const res = await Clipboard.clear()
@@ -205,6 +209,7 @@ async function clearClipboard() {
   }
 }
 
+/** Reads the clipboard when the page opens. */
 onMounted(() => {
   readClipboard()
 })

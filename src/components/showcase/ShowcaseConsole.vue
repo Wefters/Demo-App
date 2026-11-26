@@ -59,9 +59,12 @@
 </template>
 
 <script setup lang="ts">
+/** Shows the results of plugin calls, newest first, with buttons to copy the log as JSON and to clear it. */
+
 import { ref } from 'vue'
 import Icons from '@/components/common/Icons.vue'
 
+/** The result of one plugin call. */
 export interface LogItem {
   method: string
   status: 'success' | 'error'
@@ -79,6 +82,7 @@ defineEmits<{
 
 const copied = ref(false)
 
+/** Copies all entries as JSON and briefly shows that they were copied. */
 function copyLogs() {
   navigator.clipboard.writeText(JSON.stringify(props.logs, null, 2))
   copied.value = true

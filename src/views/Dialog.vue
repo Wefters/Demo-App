@@ -263,6 +263,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/dialog`: native alerts, confirmations, prompts and toasts with editable content. */
+
 import { ref, reactive } from 'vue'
 import { Dialog, type InputType, type ToastPosition } from '@wefterjs/dialog'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -271,12 +273,14 @@ import Icons from '@/components/common/Icons.vue'
 
 const logs = ref<LogItem[]>([])
 
+/** Content of the alert dialog. */
 const alertForm = reactive({
   title: 'Wefter Alert',
   message: 'This is a platform native alert dialog triggered from JavaScript.',
   buttonText: 'OK',
 })
 
+/** Content of the confirmation dialog. */
 const confirmForm = reactive({
   title: 'Confirm Operation',
   message: 'Do you want to apply the configuration changes?',
@@ -284,6 +288,7 @@ const confirmForm = reactive({
   cancelText: 'Cancel',
 })
 
+/** Content of the prompt dialog. */
 const promptForm = reactive({
   title: 'Input Required',
   message: 'Enter your verification security code:',
@@ -294,6 +299,7 @@ const promptForm = reactive({
   defaultValue: '',
 })
 
+/** Text, duration and position of the toast. */
 const toastForm = reactive({
   text: 'Action completed successfully!',
   durationMode: 'short' as 'short' | 'long' | 'custom',
@@ -301,10 +307,12 @@ const toastForm = reactive({
   position: 'bottom' as ToastPosition,
 })
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Shows the alert. */
 async function triggerAlert() {
   try {
     const res = await Dialog.alert({
@@ -328,6 +336,7 @@ async function triggerAlert() {
   }
 }
 
+/** Shows the confirmation and logs the choice. */
 async function triggerConfirm() {
   try {
     const res = await Dialog.confirm({
@@ -352,6 +361,7 @@ async function triggerConfirm() {
   }
 }
 
+/** Shows the prompt and logs the answer. */
 async function triggerPrompt() {
   try {
     const res = await Dialog.prompt({
@@ -379,6 +389,7 @@ async function triggerPrompt() {
   }
 }
 
+/** Shows the toast. */
 async function triggerToast() {
   try {
     const res = await Dialog.toast({

@@ -5,7 +5,6 @@
     desc="@wefterjs/network v0.0.2"
     info="Monitor real-time network connectivity status, transport types (Wi-Fi, Cellular, Ethernet, VPN), and status change events."
   >
-    <!-- Connectivity Overview -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -50,7 +49,6 @@
       </div>
     </div>
 
-    <!-- Event Listener Controls -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <div class="flex flex-col gap-0.5">
@@ -102,6 +100,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/network`: current connectivity and live change events. */
+
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Network, type NetworkStatus } from '@wefterjs/network'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -113,10 +113,12 @@ const isListening = ref(false)
 const logs = ref<LogItem[]>([])
 let listenerHandle: { remove: () => void } | null = null
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Loads the current connection status. */
 async function checkStatus() {
   try {
     const res = await Network.getStatus()
@@ -137,6 +139,7 @@ async function checkStatus() {
   }
 }
 
+/** Starts listening for connectivity changes. */
 function startListening() {
   if (listenerHandle) return
   listenerHandle = Network.onStatusChange((newStatus: NetworkStatus) => {
@@ -157,6 +160,7 @@ function startListening() {
   })
 }
 
+/** Stops listening for connectivity changes. */
 function stopListening() {
   if (listenerHandle) {
     listenerHandle.remove()
@@ -171,6 +175,7 @@ function stopListening() {
   })
 }
 
+/** Starts or stops listening. */
 function toggleListener() {
   if (isListening.value) {
     stopListening()
@@ -179,6 +184,7 @@ function toggleListener() {
   }
 }
 
+/** Shows a random fake status change, to preview the UI without changing networks. */
 function simulateEvent() {
   const types: Array<NetworkStatus['connectionType']> = [
     'wifi',
@@ -205,11 +211,13 @@ function simulateEvent() {
   })
 }
 
+/** Loads the status and starts listening. */
 onMounted(() => {
   checkStatus()
   startListening()
 })
 
+/** Stops listening. */
 onUnmounted(() => {
   stopListening()
 })

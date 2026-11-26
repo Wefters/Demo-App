@@ -159,6 +159,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Generates traffic for the DevTools dashboard: console entries of every level, HTTP responses with chosen
+ * status codes, and native errors from the ErrorTest plugin.
+ */
+
 import { ref } from 'vue'
 import { ErrorTest } from '@wefterjs/error-test'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -168,9 +173,11 @@ import Icons from '@/components/common/Icons.vue'
 const dashboardUrl = '/__wefter-devtools'
 const logs = ref<LogItem[]>([])
 
+/** Status codes the page can request. */
 const statusCodes = [200, 201, 301, 400, 401, 403, 404, 429, 500, 503]
 const pendingCode = ref<number | null>(null)
 
+/** Button colours for a status code range. */
 function statusButtonClass(code: number): string {
   if (code < 300)
     return 'bg-success-bg/40 hover:bg-success-bg/70 text-success border-success-border/50'
@@ -180,10 +187,12 @@ function statusButtonClass(code: number): string {
   return 'bg-danger-bg/40 hover:bg-danger-bg/70 text-danger-text border-danger-border/50'
 }
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Writes a console entry of `level`; errors include an `Error` with a stack. */
 function fireConsole(level: 'log' | 'info' | 'warn' | 'error' | 'debug') {
   const payload = { source: 'DevTools demo page', level, count: Math.floor(Math.random() * 100) }
   if (level === 'error') {
@@ -197,6 +206,7 @@ function fireConsole(level: 'log' | 'info' | 'warn' | 'error' | 'debug') {
   }
 }
 
+/** Requests a URL that answers with `code`. */
 async function fireStatus(code: number) {
   pendingCode.value = code
   const url = `https://httpbingo.org/status/${code}`
@@ -210,11 +220,13 @@ async function fireStatus(code: number) {
   }
 }
 
+/** Requests a random status code from {@link statusCodes}. */
 async function fireRandomStatus() {
   const code = statusCodes[Math.floor(Math.random() * statusCodes.length)]
   if (code) await fireStatus(code)
 }
 
+/** Calls an ErrorTest method and logs its result or error, including the native stack trace. */
 async function run(label: string, call: () => Promise<unknown>) {
   try {
     const res = await call()

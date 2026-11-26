@@ -5,7 +5,6 @@
     desc="@wefterjs/device v0.0.2"
     info="Fetch detailed hardware specifications, unique installation identifiers, battery telemetry, and locale preferences."
   >
-    <!-- Device Information Grid -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -83,9 +82,7 @@
       </div>
     </div>
 
-    <!-- Identifier & Battery Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <!-- Battery Status -->
       <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
@@ -110,7 +107,6 @@
               {{ battery ? `${Math.round(battery.batteryLevel * 100)}%` : '--' }}
             </span>
           </div>
-          <!-- Progress bar -->
           <div
             class="w-full h-2 bg-surface border border-border-subtle rounded-full overflow-hidden"
           >
@@ -131,7 +127,6 @@
         </div>
       </div>
 
-      <!-- Device ID & Locale -->
       <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
           Identifier & Locale
@@ -162,6 +157,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/device`: device info, identifier, battery and language, with live charging updates. */
+
 import { ref, onMounted, onUnmounted } from 'vue'
 import {
   Device,
@@ -181,14 +178,17 @@ const language = ref<LanguageCode | null>(null)
 const logs = ref<LogItem[]>([])
 const listenerHandle = ref<{ remove(): void } | null>(null)
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Reloads every piece of device information. */
 async function refreshAll() {
   await Promise.all([fetchInfo(), fetchId(), fetchBattery(), fetchLanguage()])
 }
 
+/** Loads model, OS and manufacturer. */
 async function fetchInfo() {
   try {
     const res = await Device.getInfo()
@@ -209,6 +209,7 @@ async function fetchInfo() {
   }
 }
 
+/** Loads the device identifier. */
 async function fetchId() {
   try {
     const res = await Device.getId()
@@ -229,6 +230,7 @@ async function fetchId() {
   }
 }
 
+/** Loads battery level and charging state. */
 async function fetchBattery() {
   try {
     const res = await Device.getBatteryInfo()
@@ -249,6 +251,7 @@ async function fetchBattery() {
   }
 }
 
+/** Loads the preferred language. */
 async function fetchLanguage() {
   try {
     const res = await Device.getLanguageCode()
@@ -269,10 +272,10 @@ async function fetchLanguage() {
   }
 }
 
+/** Loads everything and starts listening for charging changes. */
 onMounted(() => {
   refreshAll()
 
-  // Subscribe to live battery charging status changes via device hook/event
   listenerHandle.value = Device.onChargingChange((status: BatteryInfo) => {
     battery.value = status
     logs.value.unshift({
@@ -284,6 +287,7 @@ onMounted(() => {
   })
 })
 
+/** Stops listening for charging changes. */
 onUnmounted(() => {
   if (listenerHandle.value) {
     listenerHandle.value.remove()

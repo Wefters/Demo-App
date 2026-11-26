@@ -5,7 +5,6 @@
     desc="@wefterjs/app v0.0.1"
     info="Build metadata, lifecycle state, deep-link ingestion, external URL handoff, memory warnings, and Android hardware back-button handling. Lifecycle, deep-link, memory and back-button events stream live while this screen is mounted."
   >
-    <!-- Build metadata -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -35,7 +34,6 @@
       <p v-else class="text-xs text-text-tertiary m-0">Not loaded yet.</p>
     </div>
 
-    <!-- Lifecycle state -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -69,7 +67,6 @@
       </p>
     </div>
 
-    <!-- Deep links -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Deep Links</h3>
@@ -107,7 +104,6 @@
       </p>
     </div>
 
-    <!-- External URL handoff -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div>
         <h3 class="text-sm font-bold text-text-primary m-0">External URL Handoff</h3>
@@ -146,7 +142,6 @@
       </p>
     </div>
 
-    <!-- Memory -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-2">
       <h3 class="text-sm font-bold text-text-primary m-0">Memory Pressure</h3>
       <p class="text-xs text-text-tertiary m-0">
@@ -161,7 +156,6 @@
       </div>
     </div>
 
-    <!-- Back button (Android) -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
         <div>
@@ -193,7 +187,6 @@
       </div>
     </div>
 
-    <!-- Process control -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div>
         <h3 class="text-sm font-bold text-text-primary m-0">Process Control</h3>
@@ -234,6 +227,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Demo of `@wefterjs/app`: app info, lifecycle state, launch and incoming URLs, opening URLs, minimise,
+ * relaunch and exit, low memory warnings and Android back button interception.
+ */
+
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import {
   App,
@@ -252,13 +250,15 @@ const launchUrl = ref<string | null>(null)
 const lastUrlOpen = ref<string | null>(null)
 const lastBackButton = ref<string | null>(null)
 const lastLowMemory = ref<number | null>(null)
-const backIntercept = ref(true) // plugin default — @wefterjs/app owns the back button
+/** Back button interception is on by default in the plugin. */
+const backIntercept = ref(true)
 const externalUrl = ref('https://wefter.dev')
 const canOpenResult = ref<boolean | null>(null)
 const logs = ref<LogItem[]>([])
 
 const appId = computed(() => info.value?.id ?? '<package>')
 
+/** App info as label and value pairs for display. */
 const infoFields = computed(() => {
   const i = info.value
   if (!i) return []
@@ -279,14 +279,17 @@ const infoFields = computed(() => {
   ]
 })
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Adds an entry to the result log. */
 function log(method: string, status: 'success' | 'error', data: unknown) {
   logs.value.unshift({ method, status, data, timestamp: now() })
 }
 
+/** Loads the app's name, id, version and install times. */
 async function loadInfo() {
   try {
     info.value = await App.getInfo()
@@ -296,6 +299,7 @@ async function loadInfo() {
   }
 }
 
+/** Loads the current lifecycle state. */
 async function loadState() {
   try {
     const res = await App.getState()
@@ -306,6 +310,7 @@ async function loadState() {
   }
 }
 
+/** Loads the URL the app was launched with. */
 async function loadLaunchUrl() {
   try {
     const res = await App.getLaunchUrl()
@@ -316,6 +321,7 @@ async function loadLaunchUrl() {
   }
 }
 
+/** Checks whether some app can open the entered URL. */
 async function checkCanOpen() {
   try {
     canOpenResult.value = await App.canOpenUrl(externalUrl.value)
@@ -325,6 +331,7 @@ async function checkCanOpen() {
   }
 }
 
+/** Opens the entered URL in the app that handles it. */
 async function triggerOpenUrl() {
   try {
     const res = await App.openUrl(externalUrl.value)
@@ -334,6 +341,7 @@ async function triggerOpenUrl() {
   }
 }
 
+/** Sends the app to the background. */
 async function triggerMinimize() {
   try {
     log('App.minimizeApp()', 'success', await App.minimizeApp())
@@ -342,6 +350,7 @@ async function triggerMinimize() {
   }
 }
 
+/** Restarts the app. */
 async function triggerRelaunch() {
   if (!confirm('relaunchApp() will kill and cold-restart the app. Continue?')) return
   try {
@@ -351,6 +360,7 @@ async function triggerRelaunch() {
   }
 }
 
+/** Closes the app. */
 async function triggerExit() {
   if (!confirm('exitApp() will terminate the app. Continue?')) return
   try {
@@ -360,6 +370,7 @@ async function triggerExit() {
   }
 }
 
+/** Turns Android back button interception on or off. */
 async function toggleBackIntercept() {
   const next = !backIntercept.value
   try {
@@ -379,6 +390,10 @@ let urlSub: Subscription | null = null
 let memSub: Subscription | null = null
 let backSub: Subscription | null = null
 
+/**
+ * Loads the app details and subscribes to every app event. With interception on, a back press goes back
+ * in the page history when possible.
+ */
 onMounted(() => {
   void loadInfo()
   void loadState()
@@ -396,8 +411,6 @@ onMounted(() => {
     lastLowMemory.value = event.level
     log('app:lowMemory', 'success', event)
   })
-  // Interception is ON by default in the plugin — so we always keep a handler
-  // that navigates, otherwise the back press would do nothing.
   backSub = App.onBackButton((event: AppBackButtonEvent) => {
     lastBackButton.value = `canGoBack: ${event.canGoBack}`
     log('app:backButton', 'success', event)
@@ -405,6 +418,7 @@ onMounted(() => {
   })
 })
 
+/** Stops listening to app events. */
 onUnmounted(() => {
   stateSub?.remove()
   urlSub?.remove()

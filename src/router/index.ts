@@ -1,5 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+/**
+ * Routes of the demo app. Every page renders inside the shared layout. Hash history is used because the
+ * bundled app is served from local files in the native shells.
+ */
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [

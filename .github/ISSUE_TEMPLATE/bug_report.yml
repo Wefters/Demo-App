@@ -1,7 +1,7 @@
 name: Bug report
 description: Report a bug or UI crash in the Wefter Demo application.
-title: "[Bug]: "
-labels: ["bug"]
+title: '[Bug]: '
+labels: ['bug']
 body:
   - type: markdown
     attributes:
@@ -13,23 +13,23 @@ body:
       label: Affected view route
       description: Select which plugin test view or route encountered the problem.
       options:
-        - "Home (/)"
-        - "App (/app)"
-        - "Biometric (/biometric)"
-        - "Browser (/browser)"
-        - "Clipboard (/clipboard)"
-        - "Device (/device)"
-        - "Dialog (/dialog)"
-        - "FlashLight (/flashlight)"
-        - "Haptics (/haptics)"
-        - "Network (/network)"
-        - "Scanner (/scanner)"
-        - "Screen (/screen)"
-        - "SecureStorage (/secure-storage)"
-        - "Share (/share)"
-        - "Storage (/storage)"
-        - "DevTools (/devtools)"
-        - "General / Layout"
+        - 'Home (/)'
+        - 'App (/app)'
+        - 'Biometric (/biometric)'
+        - 'Browser (/browser)'
+        - 'Clipboard (/clipboard)'
+        - 'Device (/device)'
+        - 'Dialog (/dialog)'
+        - 'FlashLight (/flashlight)'
+        - 'Haptics (/haptics)'
+        - 'Network (/network)'
+        - 'Scanner (/scanner)'
+        - 'Screen (/screen)'
+        - 'SecureStorage (/secure-storage)'
+        - 'Share (/share)'
+        - 'Storage (/storage)'
+        - 'DevTools (/devtools)'
+        - 'General / Layout'
     validations:
       required: true
   - type: dropdown
@@ -38,11 +38,11 @@ body:
       label: Platform
       description: Platform where the bug occurred.
       options:
-        - "Android physical device"
-        - "Android emulator"
-        - "iOS physical device"
-        - "iOS simulator"
-        - "Desktop browser (Chrome, Safari, Firefox)"
+        - 'Android physical device'
+        - 'Android emulator'
+        - 'iOS physical device'
+        - 'iOS simulator'
+        - 'Desktop browser (Chrome, Safari, Firefox)'
     validations:
       required: true
   - type: textarea

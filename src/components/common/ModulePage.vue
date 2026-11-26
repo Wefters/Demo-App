@@ -35,6 +35,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Page layout shared by the plugin pages: an icon, title and description, an info note and an optional
+ * feature list above the page's own content.
+ */
+
 import Icons from '@/components/common/Icons.vue'
 
 defineProps<{

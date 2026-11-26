@@ -113,6 +113,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Demo of `@wefterjs/flash-light`: turns the torch on and off at a chosen brightness and shows changes made
+ * outside the app.
+ */
+
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import {
   FlashLight,
@@ -130,15 +135,18 @@ const state = reactive<FlashlightState>({
   level: 1.0,
 })
 
+/** Brightness used when turning the torch on. */
 const targetLevel = ref(1.0)
 const logs = ref<LogItem[]>([])
 const events = ref<EventItem[]>([])
 let changeSub: { remove: () => void } | null = null
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Checks whether the device has a torch and supports brightness levels. */
 async function checkAvailability() {
   try {
     const res = await FlashLight.isAvailable()
@@ -154,6 +162,7 @@ async function checkAvailability() {
   }
 }
 
+/** Loads the torch's current state. */
 async function fetchState() {
   try {
     const res = await FlashLight.getState()
@@ -175,6 +184,7 @@ async function fetchState() {
   }
 }
 
+/** Turns the torch on at the chosen brightness. */
 async function turnOn() {
   try {
     const res = await FlashLight.on({ level: targetLevel.value })
@@ -196,6 +206,7 @@ async function turnOn() {
   }
 }
 
+/** Turns the torch off. */
 async function turnOff() {
   try {
     const res = await FlashLight.off()
@@ -217,6 +228,7 @@ async function turnOff() {
   }
 }
 
+/** Toggles the torch. */
 async function toggleTorch() {
   try {
     const res = await FlashLight.toggle({ level: targetLevel.value })
@@ -238,6 +250,7 @@ async function toggleTorch() {
   }
 }
 
+/** Loads availability and state, and listens for outside changes. */
 onMounted(() => {
   checkAvailability()
   changeSub = FlashLight.onChanged((data) => {
@@ -251,6 +264,7 @@ onMounted(() => {
   })
 })
 
+/** Stops listening for torch changes. */
 onUnmounted(() => {
   changeSub?.remove()
 })

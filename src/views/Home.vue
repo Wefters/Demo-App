@@ -42,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+/** Home page: an introduction to Wefter and the demo. */
+
 import Icons from '@/components/common/Icons.vue'
 import { useApp } from '@/stores/Core/app'
 import { FRAMEWORK_VERSION } from '@/core/config'

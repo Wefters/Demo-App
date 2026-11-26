@@ -134,6 +134,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Demo of `@wefterjs/biometric`: checks what authentication the device supports and runs the system
+ * prompt with configurable text and fallback.
+ */
+
 import { ref, reactive, onMounted } from 'vue'
 import { Biometric, type BiometricAvailability } from '@wefterjs/biometric'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -145,6 +150,7 @@ const allowDeviceCredentialCheck = ref(true)
 const loading = ref(false)
 const logs = ref<LogItem[]>([])
 
+/** Options passed to `Biometric.authenticate`. */
 const authOptions = reactive({
   title: 'Authenticate',
   subtitle: 'Verify your identity to complete operation',
@@ -153,10 +159,12 @@ const authOptions = reactive({
   timeoutMs: 30000,
 })
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Checks whether biometric (or passcode) authentication can be used. */
 async function checkAvailability() {
   try {
     const res = await Biometric.isAvailable({
@@ -179,6 +187,7 @@ async function checkAvailability() {
   }
 }
 
+/** Shows the authentication prompt and logs the outcome. */
 async function triggerAuth() {
   loading.value = true
   try {
@@ -207,6 +216,7 @@ async function triggerAuth() {
   }
 }
 
+/** Checks availability when the page opens. */
 onMounted(() => {
   checkAvailability()
 })

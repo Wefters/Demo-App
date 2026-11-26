@@ -62,12 +62,15 @@
 </template>
 
 <script setup lang="ts">
+/** Slide-out navigation listing every plugin page. */
+
 import { useApp } from '@/stores/Core/app'
 import { FRAMEWORK_VERSION } from '@/core/config'
 import Icons from '@/components/common/Icons.vue'
 
 const app = useApp()
 
+/** One entry per page: label, Lucide icon name and route. */
 const navItems = [
   { name: 'Home', icon: 'House', route: '/' },
   { name: 'App', icon: 'AppWindow', route: '/app' },

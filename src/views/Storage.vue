@@ -220,12 +220,18 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Demo of `@wefterjs/storage`: stores JSON values of any type, reads them back with their type, and lists,
+ * removes and clears keys.
+ */
+
 import { computed, reactive, ref } from 'vue'
 import { Storage } from '@wefterjs/storage'
 import ModulePage from '@/components/common/ModulePage.vue'
 import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseConsole.vue'
 import Icons from '@/components/common/Icons.vue'
 
+/** An example key and value for the store form. */
 interface Preset {
   label: string
   key: string
@@ -234,6 +240,7 @@ interface Preset {
 
 const OBJECT_SAMPLE = '{\n  "theme": "dark",\n  "fontScale": 1.2,\n  "beta": true\n}'
 
+/** One example per JSON type. */
 const presets: Preset[] = [
   { label: 'object', key: 'user_preferences', value: OBJECT_SAMPLE },
   { label: 'array', key: 'recent_searches', value: '["wefter", "storage", "plugin"]' },
@@ -246,6 +253,7 @@ const setForm = reactive({ key: 'user_preferences', value: OBJECT_SAMPLE })
 const getForm = reactive({ key: 'user_preferences' })
 const removeForm = reactive({ key: 'user_preferences' })
 
+/** The last value read and how it is displayed. */
 const retrieved = reactive<{
   done: boolean
   key: string
@@ -257,11 +265,12 @@ const retrieved = reactive<{
 const knownKeys = ref<string[] | null>(null)
 const logs = ref<LogItem[]>([])
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
-/** Parse the textarea as JSON, falling back to the raw string (mirrors what the plugin does). */
+/** The entered text as JSON, or as the raw string when it is not valid JSON. */
 function parseValue(raw: string): unknown {
   try {
     return JSON.parse(raw)
@@ -270,6 +279,7 @@ function parseValue(raw: string): unknown {
   }
 }
 
+/** Tells the user whether the entered value parses as JSON and as which type. */
 const parsePreview = computed(() => {
   try {
     const parsed = JSON.parse(setForm.value)
@@ -279,6 +289,7 @@ const parsePreview = computed(() => {
   }
 })
 
+/** Fills every form with an example key and value. */
 function applyPreset(preset: Preset) {
   setForm.key = preset.key
   setForm.value = preset.value
@@ -286,10 +297,12 @@ function applyPreset(preset: Preset) {
   removeForm.key = preset.key
 }
 
+/** Adds an entry to the result log. */
 function log(method: string, status: 'success' | 'error', data: unknown) {
   logs.value.unshift({ method, status, data, timestamp: now() })
 }
 
+/** Stores the entered value. */
 async function triggerSet() {
   if (!setForm.key) return
   const value = parseValue(setForm.value)
@@ -304,6 +317,7 @@ async function triggerSet() {
   }
 }
 
+/** Reads a value and shows it with its type. */
 async function triggerGet() {
   if (!getForm.key) return
   try {
@@ -323,6 +337,7 @@ async function triggerGet() {
   }
 }
 
+/** Removes a key. */
 async function triggerRemove() {
   if (!removeForm.key) return
   try {
@@ -337,6 +352,7 @@ async function triggerRemove() {
   }
 }
 
+/** Lists every stored key. */
 async function triggerKeys() {
   try {
     const res = await Storage.keys()
@@ -347,6 +363,7 @@ async function triggerKeys() {
   }
 }
 
+/** Removes every stored value. */
 async function triggerClear() {
   try {
     const res = await Storage.clear()

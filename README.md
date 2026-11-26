@@ -22,23 +22,23 @@ Developers can launch the application on an Android device, iOS simulator, or st
 
 The application organizes each plugin test harness into dedicated routes located in `src/views/`:
 
-| View | Route | Tested functionality |
-| --- | --- | --- |
-| `App.vue` | `/app` | Lifecycle transitions, deep links, back button interception, app info, and process controls. |
-| `Biometric.vue` | `/biometric` | Availability checks, biometry type detection, and native authentication prompts. |
-| `Browser.vue` | `/browser` | Custom Tabs, SFSafariViewController, navigation controls, and OAuth flows. |
-| `Clipboard.vue` | `/clipboard` | Writing text and URLs, reading clipboard contents, and clearing the pasteboard. |
-| `Device.vue` | `/device` | Hardware metadata, unique vendor UUID, battery level, and charging state listeners. |
-| `Dialog.vue` | `/dialog` | Alert, confirm, prompt dialogs with custom input types, and positioned toasts. |
-| `FlashLight.vue` | `/flashlight` | Torch toggle, brightness intensity adjustment, and external state change events. |
-| `Haptics.vue` | `/haptics` | Impact styles, notification sequences, selection clicks, and custom vibration patterns. |
-| `Network.vue` | `/network` | Real-time connectivity state, connection type detection, and offline handling. |
-| `Scanner.vue` | `/scanner` | Camera barcode and QR scanning, gallery image decoding, and camera zoom controls. |
-| `Screen.vue` | `/screen` | Window brightness, orientation locking, and screen keep-awake controls. |
-| `SecureStorage.vue` | `/secure-storage` | Hardware-encrypted key-value storage using Android Keystore and iOS Keychain. |
-| `Share.vue` | `/share` | Native system share sheets for text, URLs, and titles. |
-| `Storage.vue` | `/storage` | Fast unencrypted JSON key-value storage via SharedPreferences and UserDefaults. |
-| `DevTools.vue` | `/devtools` | Telemetry inspector, manual event emission, and error boundary diagnostics. |
+| View                | Route             | Tested functionality                                                                         |
+| ------------------- | ----------------- | -------------------------------------------------------------------------------------------- |
+| `App.vue`           | `/app`            | Lifecycle transitions, deep links, back button interception, app info, and process controls. |
+| `Biometric.vue`     | `/biometric`      | Availability checks, biometry type detection, and native authentication prompts.             |
+| `Browser.vue`       | `/browser`        | Custom Tabs, SFSafariViewController, navigation controls, and OAuth flows.                   |
+| `Clipboard.vue`     | `/clipboard`      | Writing text and URLs, reading clipboard contents, and clearing the pasteboard.              |
+| `Device.vue`        | `/device`         | Hardware metadata, unique vendor UUID, battery level, and charging state listeners.          |
+| `Dialog.vue`        | `/dialog`         | Alert, confirm, prompt dialogs with custom input types, and positioned toasts.               |
+| `FlashLight.vue`    | `/flashlight`     | Torch toggle, brightness intensity adjustment, and external state change events.             |
+| `Haptics.vue`       | `/haptics`        | Impact styles, notification sequences, selection clicks, and custom vibration patterns.      |
+| `Network.vue`       | `/network`        | Real-time connectivity state, connection type detection, and offline handling.               |
+| `Scanner.vue`       | `/scanner`        | Camera barcode and QR scanning, gallery image decoding, and camera zoom controls.            |
+| `Screen.vue`        | `/screen`         | Window brightness, orientation locking, and screen keep-awake controls.                      |
+| `SecureStorage.vue` | `/secure-storage` | Hardware-encrypted key-value storage using Android Keystore and iOS Keychain.                |
+| `Share.vue`         | `/share`          | Native system share sheets for text, URLs, and titles.                                       |
+| `Storage.vue`       | `/storage`        | Fast unencrypted JSON key-value storage via SharedPreferences and UserDefaults.              |
+| `DevTools.vue`      | `/devtools`       | Telemetry inspector, manual event emission, and error boundary diagnostics.                  |
 
 ## Running the application
 

@@ -10,6 +10,8 @@
 </template>
 
 <script setup lang="ts">
+/** Page frame: header, sidebar and footer around a scrollable content area. */
+
 import Header from './components/Header.vue'
 import Sidebar from './components/Sidebar.vue'
 import Footer from './components/Footer.vue'

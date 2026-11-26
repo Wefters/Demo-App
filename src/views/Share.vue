@@ -5,7 +5,6 @@
     desc="@wefterjs/share v0.0.2"
     info="Trigger system share dialogs to share text, links, and documents across native social apps, messaging, and system extensions."
   >
-    <!-- Share Capability Status -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -33,7 +32,6 @@
       </div>
     </div>
 
-    <!-- Share Payload Form -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">Share Payload</h3>
 
@@ -106,6 +104,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/share`: opens the system share sheet with editable content. */
+
 import { ref, reactive, onMounted } from 'vue'
 import { Share } from '@wefterjs/share'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -116,6 +116,7 @@ const canShareValue = ref(true)
 const loading = ref(false)
 const logs = ref<LogItem[]>([])
 
+/** Title, text, URL and dialog title to share. */
 const shareForm = reactive({
   title: 'Wefter Mobile Framework',
   text: 'Check out Wefter for building high performance native web mobile applications!',
@@ -123,10 +124,12 @@ const shareForm = reactive({
   dialogTitle: 'Share Wefter App',
 })
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Checks whether sharing is available. */
 async function checkCapability() {
   try {
     const res = await Share.canShare()
@@ -147,6 +150,7 @@ async function checkCapability() {
   }
 }
 
+/** Opens the share sheet and logs whether the share was completed. */
 async function triggerShare() {
   loading.value = true
   try {
@@ -174,6 +178,7 @@ async function triggerShare() {
   }
 }
 
+/** Fills the form with example content. */
 function fillPreset() {
   shareForm.title = 'Wefter Framework v0.0.1'
   shareForm.text = 'Explore official Wefter JS plugins for Vue and cross-platform native bridges.'
@@ -181,6 +186,7 @@ function fillPreset() {
   shareForm.dialogTitle = 'Share with Friends'
 }
 
+/** Checks sharing availability when the page opens. */
 onMounted(() => {
   checkCapability()
 })

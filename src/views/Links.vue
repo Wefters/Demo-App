@@ -192,12 +192,15 @@
 </template>
 
 <script setup lang="ts">
+/** Links to Wefter's documentation, repositories and community. */
+
 import { ref } from 'vue'
 import { Browser } from '@wefterjs/browser'
 import Icons from '@/components/common/Icons.vue'
 
 const copiedUrl = ref('')
 
+/** Copies a link and briefly marks it as copied. */
 function copyUrl(url: string) {
   navigator.clipboard.writeText(url)
   copiedUrl.value = url
@@ -206,6 +209,7 @@ function copyUrl(url: string) {
   }, 2500)
 }
 
+/** Opens a link in the in-app browser. */
 async function openInApp(url: string) {
   try {
     await Browser.open({ url })

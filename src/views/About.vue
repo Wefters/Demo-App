@@ -156,6 +156,8 @@
 </template>
 
 <script setup lang="ts">
+/** About page: what Wefter is and the version in use. */
+
 import Icons from '@/components/common/Icons.vue'
 import { FRAMEWORK_VERSION } from '@/core/config'
 

@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
+/** Top bar with the menu button, the current page title and the theme switch. */
+
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useApp } from '@/stores/Core/app'
@@ -38,6 +40,7 @@ import Icons from '@/components/common/Icons.vue'
 const app = useApp()
 const route = useRoute()
 
+/** Title of the current route, from its `meta.title`. */
 const pageTitle = computed(() => (route.meta?.title as string) ?? 'Wefter')
 </script>
 

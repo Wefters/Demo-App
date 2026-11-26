@@ -5,7 +5,6 @@
     desc="@wefterjs/screen v0.0.2"
     info="Control screen brightness levels, keep display awake during critical tasks, and query or lock orientation mode."
   >
-    <!-- Screen Brightness Control Card -->
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -65,9 +64,7 @@
       </div>
     </div>
 
-    <!-- Keep Awake & Screen Lock -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <!-- Keep Awake -->
       <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
         <div class="flex items-center justify-between">
           <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -108,7 +105,6 @@
         </div>
       </div>
 
-      <!-- Orientation Lock -->
       <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-3">
         <div class="flex items-center justify-between">
           <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted m-0">
@@ -159,6 +155,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/screen`: brightness, keep awake and orientation lock. */
+
 import { ref, onMounted } from 'vue'
 import { Screen, type OrientationType } from '@wefterjs/screen'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -180,10 +178,12 @@ const lockableOrientations: OrientationType[] = [
 ]
 const selectedOrientation = ref<OrientationType>('portrait')
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Loads the current brightness. */
 async function fetchBrightness() {
   try {
     const res = await Screen.getBrightness()
@@ -204,6 +204,7 @@ async function fetchBrightness() {
   }
 }
 
+/** Applies the brightness from the slider. */
 async function updateBrightness() {
   try {
     const res = await Screen.setBrightness({ brightness: brightness.value })
@@ -223,11 +224,13 @@ async function updateBrightness() {
   }
 }
 
+/** Applies a preset brightness. */
 async function setBrightnessLevel(val: number) {
   brightness.value = val
   await updateBrightness()
 }
 
+/** Keeps the screen on. */
 async function enableKeepAwake() {
   try {
     const res = await Screen.keepAwake()
@@ -248,6 +251,7 @@ async function enableKeepAwake() {
   }
 }
 
+/** Lets the screen turn off again. */
 async function enableAllowSleep() {
   try {
     const res = await Screen.allowSleep()
@@ -268,6 +272,7 @@ async function enableAllowSleep() {
   }
 }
 
+/** Loads the current orientation. */
 async function fetchOrientation() {
   try {
     const res = await Screen.getOrientation()
@@ -288,6 +293,7 @@ async function fetchOrientation() {
   }
 }
 
+/** Locks the screen to `mode`. */
 async function lockOrientationMode(mode: OrientationType) {
   try {
     const res = await Screen.lockOrientation({ orientation: mode })
@@ -308,6 +314,7 @@ async function lockOrientationMode(mode: OrientationType) {
   }
 }
 
+/** Unlocks the orientation. */
 async function unlockOrientationMode() {
   try {
     const res = await Screen.unlockOrientation()
@@ -328,6 +335,7 @@ async function unlockOrientationMode() {
   }
 }
 
+/** Loads brightness and orientation when the page opens. */
 onMounted(() => {
   fetchBrightness()
   fetchOrientation()

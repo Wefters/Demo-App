@@ -165,6 +165,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Demo of `@wefterjs/scanner`: scans barcodes and QR codes with configurable formats, zoom and continuous
+ * mode, showing every scan event.
+ */
+
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { Scanner, type BarcodeFormat } from '@wefterjs/scanner'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -183,6 +188,7 @@ const availableFormats: BarcodeFormat[] = [
   'all',
 ]
 
+/** Options passed to `Scanner.scan`. */
 const scanOptions = reactive({
   prompt: 'Align QR or Barcode inside camera viewfinder',
   continuous: false,
@@ -203,10 +209,12 @@ const events = ref<EventItem[]>([])
 let codeSub: { remove: () => void } | null = null
 let cancelSub: { remove: () => void } | null = null
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Adds or removes a format. `all` and specific formats exclude each other. */
 function toggleFormat(fmt: BarcodeFormat) {
   if (fmt === 'all') {
     scanOptions.formats = ['all']
@@ -221,10 +229,12 @@ function toggleFormat(fmt: BarcodeFormat) {
   }
 }
 
+/** Copies a scanned code. */
 function copyCode(code: string) {
   navigator.clipboard.writeText(code)
 }
 
+/** Opens the scanner with the chosen options. */
 async function triggerScan() {
   try {
     const res = await Scanner.scan({
@@ -256,6 +266,7 @@ async function triggerScan() {
   }
 }
 
+/** Closes the scanner. */
 async function triggerStop() {
   try {
     const res = await Scanner.stop({
@@ -277,6 +288,7 @@ async function triggerStop() {
   }
 }
 
+/** Subscribes to scan and cancel events. */
 onMounted(() => {
   codeSub = Scanner.onCodeScanned((data) => {
     const timeStr = now()
@@ -301,6 +313,7 @@ onMounted(() => {
   })
 })
 
+/** Stops listening to scanner events. */
 onUnmounted(() => {
   codeSub?.remove()
   cancelSub?.remove()

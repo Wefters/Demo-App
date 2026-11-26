@@ -1,3 +1,5 @@
+/** Entry point of the Wefter demo app: a Vue app with a page for each plugin. */
+
 import '@/assets/css/index.css'
 
 import { createApp } from 'vue'
@@ -8,6 +10,10 @@ import router from './router'
 
 const app = createApp(App)
 
+/**
+ * Logs render errors. If the app failed before anything rendered, the error is shown on the page instead
+ * of a blank screen.
+ */
 app.config.errorHandler = (err, _instance, info) => {
   console.error('[Wefter App Error]', info, err)
   const el = document.getElementById('app')

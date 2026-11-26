@@ -178,21 +178,26 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/secure-storage`: stores, reads and deletes secrets in the device's secure storage. */
+
 import { ref, reactive } from 'vue'
 import { SecureStorage } from '@wefterjs/secure-storage'
 import ModulePage from '@/components/common/ModulePage.vue'
 import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseConsole.vue'
 import Icons from '@/components/common/Icons.vue'
 
+/** Key and value to store. */
 const setForm = reactive({
   key: 'auth_access_token',
   value: 'sec_token_99a8b7c6d5e4f3a2b10_wefter_demo',
 })
 
+/** Key to read. */
 const getForm = reactive({
   key: 'auth_access_token',
 })
 
+/** Key to delete. */
 const deleteForm = reactive({
   key: 'auth_access_token',
 })
@@ -208,10 +213,12 @@ const getRetrievedKey = ref('')
 const getRetrievedState = ref<string | null>(null)
 const logs = ref<LogItem[]>([])
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Fills the store form with an example secret. */
 function applyPreset(preset: { key: string; value: string }) {
   setForm.key = preset.key
   setForm.value = preset.value
@@ -219,10 +226,12 @@ function applyPreset(preset: { key: string; value: string }) {
   deleteForm.key = preset.key
 }
 
+/** Copies a retrieved value. */
 function copyValue(val: string) {
   navigator.clipboard.writeText(val)
 }
 
+/** Stores the value. */
 async function triggerSet() {
   if (!setForm.key) return
   try {
@@ -246,6 +255,7 @@ async function triggerSet() {
   }
 }
 
+/** Reads the value and shows it. */
 async function triggerGet() {
   if (!getForm.key) return
   try {
@@ -270,6 +280,7 @@ async function triggerGet() {
   }
 }
 
+/** Deletes the value. */
 async function triggerDelete() {
   if (!deleteForm.key) return
   try {

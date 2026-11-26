@@ -26,6 +26,8 @@
 </template>
 
 <script setup lang="ts">
+/** Bottom navigation bar with the main sections. */
+
 import Icons from '@/components/common/Icons.vue'
 
 const navItems = [

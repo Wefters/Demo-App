@@ -183,6 +183,8 @@
 </template>
 
 <script setup lang="ts">
+/** Demo of `@wefterjs/haptics`: impacts, notifications, selection ticks and custom vibration patterns. */
+
 import { ref, reactive, onMounted } from 'vue'
 import {
   Haptics,
@@ -200,6 +202,7 @@ const logs = ref<LogItem[]>([])
 
 const impactStyles: ImpactStyle[] = ['light', 'soft', 'medium', 'rigid', 'heavy']
 
+/** Duration, pattern, amplitude and repeat options for `Haptics.vibrate`. */
 const vibrateForm = reactive({
   duration: 300,
   amplitude: 128,
@@ -207,10 +210,12 @@ const vibrateForm = reactive({
   repeat: false,
 })
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Checks whether haptics and amplitude control are supported. */
 async function checkAvailability() {
   try {
     const res = await Haptics.isAvailable()
@@ -231,6 +236,7 @@ async function checkAvailability() {
   }
 }
 
+/** Plays an impact of `style` at the chosen intensity. */
 async function triggerImpact(style: ImpactStyle) {
   try {
     const res = await Haptics.impact({
@@ -253,6 +259,7 @@ async function triggerImpact(style: ImpactStyle) {
   }
 }
 
+/** Plays notification feedback of `type`. */
 async function triggerNotification(type: NotificationType) {
   try {
     const res = await Haptics.notification({ type })
@@ -272,6 +279,7 @@ async function triggerNotification(type: NotificationType) {
   }
 }
 
+/** Plays a selection tick. */
 async function triggerSelection() {
   try {
     const res = await Haptics.selection()
@@ -291,6 +299,7 @@ async function triggerSelection() {
   }
 }
 
+/** Plays the configured vibration or pattern. */
 async function triggerVibrate() {
   try {
     const patternArr = vibrateForm.patternText
@@ -322,6 +331,7 @@ async function triggerVibrate() {
   }
 }
 
+/** Stops any vibration in progress. */
 async function triggerCancel() {
   try {
     const res = await Haptics.cancel()
@@ -341,6 +351,7 @@ async function triggerCancel() {
   }
 }
 
+/** Checks availability when the page opens. */
 onMounted(() => {
   checkAvailability()
 })

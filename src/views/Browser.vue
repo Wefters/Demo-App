@@ -165,6 +165,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Demo of `@wefterjs/browser`: opens pages in the in-app or system browser, closes them, and runs a sign-in
+ * flow, showing the events each one emits.
+ */
+
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { Browser, type BrowserMode } from '@wefterjs/browser'
 import ModulePage from '@/components/common/ModulePage.vue'
@@ -175,6 +180,7 @@ import Icons from '@/components/common/Icons.vue'
 const logs = ref<LogItem[]>([])
 const events = ref<EventItem[]>([])
 
+/** Options passed to `Browser.open`. */
 const openOptions = reactive({
   url: 'https://wefter.dev',
   mode: 'webview' as BrowserMode,
@@ -186,6 +192,7 @@ const openOptions = reactive({
   desktopMode: false,
 })
 
+/** Options passed to `Browser.auth`. */
 const authOptions = reactive({
   url: 'https://github.com/login/oauth/authorize?client_id=demo',
   redirectUri: 'wefter://auth-callback',
@@ -197,10 +204,12 @@ let openedSub: { remove: () => void } | null = null
 let closedSub: { remove: () => void } | null = null
 let authSub: { remove: () => void } | null = null
 
+/** Current time, for log entries. */
 function now() {
   return new Date().toLocaleTimeString()
 }
 
+/** Opens the URL with the chosen options. */
 async function triggerOpen() {
   try {
     const res = await Browser.open({
@@ -229,6 +238,7 @@ async function triggerOpen() {
   }
 }
 
+/** Closes the open browser. */
 async function triggerClose() {
   try {
     const res = await Browser.close({
@@ -250,6 +260,7 @@ async function triggerClose() {
   }
 }
 
+/** Starts the sign-in flow. */
 async function triggerAuth() {
   try {
     const res = await Browser.auth({
@@ -274,6 +285,7 @@ async function triggerAuth() {
   }
 }
 
+/** Subscribes to the browser's opened, closed and sign-in events. */
 onMounted(() => {
   openedSub = Browser.onOpened((data) => {
     events.value.unshift({
@@ -300,6 +312,7 @@ onMounted(() => {
   })
 })
 
+/** Stops listening to browser events. */
 onUnmounted(() => {
   openedSub?.remove()
   closedSub?.remove()
