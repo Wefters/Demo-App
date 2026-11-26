@@ -7,6 +7,8 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import { installDeepLinkRouting } from './core/deep-links'
+import { installTapToDismissKeyboard } from './core/keyboard'
 
 const app = createApp(App)
 
@@ -26,5 +28,7 @@ app.config.errorHandler = (err, _instance, info) => {
 
 app.use(createPinia())
 app.use(router)
+installDeepLinkRouting(router)
+installTapToDismissKeyboard()
 
 app.mount('#app')

@@ -2,7 +2,7 @@
   "plugins": {
     "app": {
       "resolved": "0.0.1",
-      "integrity": "sha256-c11b95ca6b09753e96a2a12d9f1781e088251ab3d25868e4e6726c77ab1875fc"
+      "integrity": "sha256-dfa721018a1cf39aaad8cf40b96a8780e9b37100accf4b6e74edcbf144866464"
     },
     "biometric": {
       "resolved": "0.0.1",
@@ -10,7 +10,7 @@
     },
     "browser": {
       "resolved": "0.0.1",
-      "integrity": "sha256-344e5affdac03632f042f77a79d3ed2aaa6cbef8591776167ba2ecd457ed9c40"
+      "integrity": "sha256-b374edfafee69d1b992e936171b7ab8b67db1e144ff43ba2a9120ce7e101add7"
     },
     "flash-light": {
       "resolved": "0.0.3",
@@ -61,5 +61,5 @@
       "integrity": "sha256-467348230878cec314b1620dfccb0cd11b62fdb241cc0d7180ac1c10ea7f4fb3"
     }
   },
-  "syncedAt": "2026-11-25T15:03:38.034Z"
+  "syncedAt": "2026-11-26T07:12:52.811Z"
 }

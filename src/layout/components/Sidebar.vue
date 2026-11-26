@@ -87,6 +87,7 @@ const navItems = [
   { name: 'Secure Storage', icon: 'ShieldCheck', route: '/secure-storage' },
   { name: 'Storage', icon: 'Database', route: '/storage' },
   { name: 'Share', icon: 'Share2', route: '/share' },
+  { name: 'Backend API', icon: 'Server', route: '/backend' },
   { name: 'Dev Tools', icon: 'Wrench', route: '/dev-tools' },
 ]
 </script>

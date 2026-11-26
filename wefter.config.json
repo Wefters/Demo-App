@@ -25,5 +25,8 @@
       "appName": "Wefter Demo"
     }
   },
-  "launchBackground": "#111314"
+  "launchBackground": "#111314",
+  "deepLinks": {
+    "schemes": ["wefterdemo"]
+  }
 }

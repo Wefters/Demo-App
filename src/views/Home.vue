@@ -71,6 +71,12 @@ const modules = [
   { name: 'Storage', icon: 'Database', route: '/storage', desc: 'Unencrypted key-value + JSON' },
   { name: 'Share', icon: 'Share2', route: '/share', desc: 'Native share sheet' },
   {
+    name: 'Backend API',
+    icon: 'Server',
+    route: '/backend',
+    desc: 'Test API, OAuth sign-in & deep links',
+  },
+  {
     name: 'Dev Tools',
     icon: 'Wrench',
     route: '/dev-tools',

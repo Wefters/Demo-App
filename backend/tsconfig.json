@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node24/tsconfig.json",
+  "include": ["src", "test"],
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "types": ["node"]
+  }
+}

@@ -86,21 +86,25 @@
         }}</span>
       </div>
       <div
-        v-if="lastUrlOpen"
+        v-if="lastDeepLink"
         class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
       >
         <span class="text-[11px] text-text-tertiary"
-          >Last <span class="font-mono">app:urlOpen</span></span
+          >Last <span class="font-mono">onDeepLink</span>
+          {{ lastDeepLink.isLaunch ? '(launch)' : '(while running)' }}</span
         >
-        <span class="text-sm font-mono text-accent break-all">{{ lastUrlOpen }}</span>
+        <span class="text-sm font-mono text-accent break-all">{{ lastDeepLink.url }}</span>
+        <span class="text-[11px] font-mono text-text-tertiary break-all"
+          >path {{ lastDeepLink.path }}</span
+        >
       </div>
       <p class="text-[11px] text-text-tertiary m-0">
-        Test from a terminal:
+        The demo registers <span class="font-mono">wefterdemo://</span> in wefter.config.json. Test
+        from a terminal:
         <span class="font-mono"
-          >adb shell am start -a android.intent.action.VIEW -d "wefter://demo/app?ok=1"</span
+          >adb shell am start -a android.intent.action.VIEW -d "wefterdemo://app/info?ok=1"</span
         >
-        — needs a <span class="font-mono">&lt;intent-filter&gt;</span> on
-        <span class="font-mono">.MainActivity</span> (see plugin README).
+        or <span class="font-mono">xcrun simctl openurl booted "wefterdemo://app/info"</span>.
       </p>
     </div>
 
@@ -228,8 +232,9 @@
 
 <script setup lang="ts">
 /**
- * Demo of `@wefterjs/app`: app info, lifecycle state, launch and incoming URLs, opening URLs, minimise,
- * relaunch and exit, low memory warnings and Android back button interception.
+ * Demo of `@wefterjs/app`: app info, lifecycle state, opening URLs, minimise, relaunch and exit, low
+ * memory warnings and Android back button interception. Also shows deep links, which come from
+ * `@wefterjs/core`.
  */
 
 import { computed, onMounted, onUnmounted, ref } from 'vue'
@@ -240,6 +245,7 @@ import {
   type AppBackButtonEvent,
   type Subscription,
 } from '@wefterjs/app'
+import { getLaunchUrl, onDeepLink, type DeepLink, type DeepLinkSubscription } from '@wefterjs/core'
 import ModulePage from '@/components/common/ModulePage.vue'
 import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseConsole.vue'
 import Icons from '@/components/common/Icons.vue'
@@ -247,7 +253,7 @@ import Icons from '@/components/common/Icons.vue'
 const info = ref<AppInfo | null>(null)
 const phase = ref<AppLifecycleState>('active')
 const launchUrl = ref<string | null>(null)
-const lastUrlOpen = ref<string | null>(null)
+const lastDeepLink = ref<DeepLink | null>(null)
 const lastBackButton = ref<string | null>(null)
 const lastLowMemory = ref<number | null>(null)
 /** Back button interception is on by default in the plugin. */
@@ -313,11 +319,10 @@ async function loadState() {
 /** Loads the URL the app was launched with. */
 async function loadLaunchUrl() {
   try {
-    const res = await App.getLaunchUrl()
-    launchUrl.value = res.url
-    log('App.getLaunchUrl()', 'success', res)
+    launchUrl.value = await getLaunchUrl()
+    log('getLaunchUrl()', 'success', { url: launchUrl.value })
   } catch (err: any) {
-    log('App.getLaunchUrl()', 'error', { error: err?.message || String(err), code: err?.code })
+    log('getLaunchUrl()', 'error', { error: err?.message || String(err), code: err?.code })
   }
 }
 
@@ -386,7 +391,7 @@ async function toggleBackIntercept() {
 }
 
 let stateSub: Subscription | null = null
-let urlSub: Subscription | null = null
+let linkSub: DeepLinkSubscription | null = null
 let memSub: Subscription | null = null
 let backSub: Subscription | null = null
 
@@ -403,9 +408,9 @@ onMounted(() => {
     phase.value = state.state
     log('app:stateChange', 'success', state)
   })
-  urlSub = App.onUrlOpen((event) => {
-    lastUrlOpen.value = event.url
-    log('app:urlOpen', 'success', event)
+  linkSub = onDeepLink((link) => {
+    lastDeepLink.value = link
+    log('onDeepLink', 'success', link)
   })
   memSub = App.onLowMemory((event) => {
     lastLowMemory.value = event.level
@@ -421,7 +426,7 @@ onMounted(() => {
 /** Stops listening to app events. */
 onUnmounted(() => {
   stateSub?.remove()
-  urlSub?.remove()
+  linkSub?.remove()
   memSub?.remove()
   backSub?.remove()
 })

@@ -129,7 +129,7 @@
           <input
             v-model="authOptions.redirectUri"
             type="text"
-            placeholder="wefter://auth-callback"
+            placeholder="<app id>.auth://callback"
             class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
           />
         </div>
@@ -192,10 +192,10 @@ const openOptions = reactive({
   desktopMode: false,
 })
 
-/** Options passed to `Browser.auth`. */
+/** Options passed to `Browser.auth`. The redirect URI is filled in from the app's scheme on mount. */
 const authOptions = reactive({
   url: 'https://github.com/login/oauth/authorize?client_id=demo',
-  redirectUri: 'wefter://auth-callback',
+  redirectUri: '',
   id: 'oauth-demo-1',
   ephemeral: false,
 })
@@ -285,8 +285,21 @@ async function triggerAuth() {
   }
 }
 
-/** Subscribes to the browser's opened, closed and sign-in events. */
+/** Fills in the redirect URI and subscribes to the browser's opened, closed and sign-in events. */
 onMounted(() => {
+  Browser.getRedirectUri()
+    .then((uri) => {
+      if (!authOptions.redirectUri) authOptions.redirectUri = uri
+    })
+    .catch((err: any) => {
+      logs.value.unshift({
+        method: 'Browser.getRedirectUri',
+        status: 'error',
+        data: { error: err?.message || String(err) },
+        timestamp: now(),
+      })
+    })
+
   openedSub = Browser.onOpened((data) => {
     events.value.unshift({
       name: 'browser:opened',

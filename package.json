@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "api": "pnpm --dir backend dev",
+    "api:test": "pnpm --dir backend test",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -30,6 +32,7 @@
     "@wefterjs/secure-storage": "link:../Plugins/SecureStorage",
     "@wefterjs/share": "link:../Plugins/Share",
     "@wefterjs/storage": "link:../Plugins/Storage",
+    "axios": "^1.21.1",
     "pinia": "^4.0.2",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.40",

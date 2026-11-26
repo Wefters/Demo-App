@@ -103,6 +103,12 @@ const router = createRouter({
           meta: { title: 'Share' },
         },
         {
+          path: 'backend',
+          name: 'backend',
+          component: () => import('@/views/Backend.vue'),
+          meta: { title: 'Backend API' },
+        },
+        {
           path: 'dev-tools',
           name: 'dev-tools',
           component: () => import('@/views/DevTools.vue'),

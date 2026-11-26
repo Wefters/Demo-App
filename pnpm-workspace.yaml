@@ -1,3 +1,6 @@
+packages:
+  - backend
+
 minimumReleaseAgeExclude:
   - '@wefterjs/cli@0.0.3'
   - '@wefterjs/biometric@0.0.1'
