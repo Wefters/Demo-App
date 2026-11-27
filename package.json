@@ -12,7 +12,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "format": "prettier --write --experimental-cli src/",
-    "partner": "node partner-site/serve.mjs"
+    "partner": "node partner-site/serve.mjs",
+    "wefter:build:before": "pnpm build"
   },
   "dependencies": {
     "@lucide/vue": "^1.31.0",

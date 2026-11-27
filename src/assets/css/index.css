@@ -28,7 +28,7 @@ body {
 }
 
 .bottom-offset {
-  padding-bottom: calc(env(safe-area-inset-bottom) - 1rem);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 ::-webkit-scrollbar {
