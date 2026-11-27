@@ -74,6 +74,8 @@ const app = useApp()
 const navItems = [
   { name: 'Home', icon: 'House', route: '/' },
   { name: 'Web APIs', icon: 'Layers', route: '/web-apis' },
+  { name: 'Platform', icon: 'Cpu', route: '/platform' },
+  { name: 'Embedded sites', icon: 'AppWindowMac', route: '/embedded' },
   { name: 'App', icon: 'AppWindow', route: '/app' },
   { name: 'Scanner', icon: 'ScanLine', route: '/scanner' },
   { name: 'Biometric', icon: 'Fingerprint', route: '/biometric' },

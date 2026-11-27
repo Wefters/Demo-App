@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "partner": "node partner-site/serve.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.31.0",

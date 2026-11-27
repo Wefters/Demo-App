@@ -28,8 +28,9 @@
               v-model="openOptions.mode"
               class="px-3 py-2 bg-surface-raised border border-border-subtle rounded-xl text-xs text-text-primary focus:outline-none focus:border-accent"
             >
-              <option value="webview">In-App WebView (Custom Tabs / Safari)</option>
-              <option value="external">External System Browser</option>
+              <option value="inApp">In-app browser (Custom Tabs / Safari)</option>
+              <option value="external">External system browser</option>
+              <option value="webview">Plugin web view (deprecated)</option>
             </select>
           </div>
 
@@ -183,7 +184,7 @@ const events = ref<EventItem[]>([])
 /** Options passed to `Browser.open`. */
 const openOptions = reactive({
   url: 'https://wefter.dev',
-  mode: 'webview' as BrowserMode,
+  mode: 'inApp' as BrowserMode,
   id: 'browser-demo-1',
   title: 'Wefter Documentation',
   showToolbar: true,
