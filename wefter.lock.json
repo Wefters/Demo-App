@@ -50,7 +50,7 @@
     },
     "screen": {
       "resolved": "0.0.2",
-      "integrity": "sha256-7c3665062edf6ce754e6045ea16299ad898b0bfdc0a0e5ca1c7a9d800e6bef3a"
+      "integrity": "sha256-5ad492799ff28a15489fc57120ec45f5a5d9574a028bdb812419155296ef20bf"
     },
     "share": {
       "resolved": "0.0.2",
@@ -61,5 +61,5 @@
       "integrity": "sha256-467348230878cec314b1620dfccb0cd11b62fdb241cc0d7180ac1c10ea7f4fb3"
     }
   },
-  "syncedAt": "2026-11-26T20:30:50.215Z"
+  "syncedAt": "2026-11-27T09:19:26.936Z"
 }

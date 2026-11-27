@@ -23,6 +23,10 @@
     "development": {
       "appId": "dev.sandip.wefter.demo",
       "appName": "Wefter Demo"
+    },
+    "production": {
+      "appId": "com.wefter.demo",
+      "appName": "Wefter"
     }
   },
   "launchBackground": "#111314",
