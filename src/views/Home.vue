@@ -57,6 +57,18 @@ const modules = [
     route: '/web-apis',
     desc: 'Dialogs, files, camera, location & more',
   },
+  {
+    name: 'Platform',
+    icon: 'Cpu',
+    route: '/platform',
+    desc: 'Permissions, held events, lifecycle & languages',
+  },
+  {
+    name: 'Embedded sites',
+    icon: 'AppWindowMac',
+    route: '/embedded',
+    desc: 'Iframes and web windows that talk to the app',
+  },
   { name: 'App', icon: 'AppWindow', route: '/app', desc: 'Lifecycle, deep links & back button' },
   { name: 'Scanner', icon: 'ScanLine', route: '/scanner', desc: 'QR & barcode scanning' },
   { name: 'Biometric', icon: 'Fingerprint', route: '/biometric', desc: 'Auth & fingerprint' },

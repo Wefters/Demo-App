@@ -26,6 +26,18 @@ const router = createRouter({
           meta: { title: 'Web APIs' },
         },
         {
+          path: 'platform',
+          name: 'platform',
+          component: () => import('@/views/Platform.vue'),
+          meta: { title: 'Platform' },
+        },
+        {
+          path: 'embedded',
+          name: 'embedded',
+          component: () => import('@/views/Embedded.vue'),
+          meta: { title: 'Embedded sites' },
+        },
+        {
           path: 'app',
           name: 'app',
           component: () => import('@/views/App.vue'),

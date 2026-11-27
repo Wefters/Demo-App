@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Partner site</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --accent: #0f766e;
+      }
+      body {
+        font:
+          15px/1.5 system-ui,
+          sans-serif;
+        margin: 0;
+        padding: 16px;
+        background: #f0fdfa;
+        color: #134e4a;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #042f2e;
+          color: #ccfbf1;
+        }
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0 0 4px;
+      }
+      .status {
+        font-size: 13px;
+        opacity: 0.8;
+        margin: 0 0 12px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      button {
+        font: inherit;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 0;
+        background: var(--accent);
+        color: white;
+      }
+      button.secondary {
+        background: transparent;
+        color: inherit;
+        border: 1px solid currentColor;
+      }
+      pre {
+        font-size: 12px;
+        white-space: pre-wrap;
+        margin: 0;
+        padding: 8px;
+        border-radius: 8px;
+        background: rgba(15, 118, 110, 0.1);
+        min-height: 60px;
+      }
+      .banner {
+        display: none;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: #fde68a;
+        color: #713f12;
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner" id="banner"></div>
+    <h1>Partner site</h1>
+    <p class="status" id="status">Connecting to the app…</p>
+    <div class="row">
+      <button id="getUser">Call getUser</button>
+      <button id="hello" class="secondary">Send "hello" event</button>
+      <button id="unknown" class="secondary">Call a method the app doesn't expose</button>
+    </div>
+    <div class="row">
+      <button id="haptics" class="secondary">Vibrate (granted plugin)</button>
+      <button id="clipboard" class="secondary">Read clipboard (not granted)</button>
+      <button id="away" class="secondary">Go to example.com</button>
+    </div>
+    <pre id="log"></pre>
+    <script src="wefter-frame.js"></script>
+    <script src="wefter-core.js"></script>
+    <script>
+      const logBox = document.getElementById('log')
+      const log = (...parts) => {
+        const line = parts.map((p) => (typeof p === 'string' ? p : JSON.stringify(p))).join(' ')
+        logBox.textContent = `${new Date().toLocaleTimeString()} ${line}\n${logBox.textContent}`
+      }
+      window.partnerLog = log
+      let app = null
+
+      WefterFrame.connectToApp({
+        appOrigins: [
+          'https://appassets.androidplatform.net',
+          'app://local',
+          'http://localhost:5173',
+        ],
+      }).then((connection) => {
+        app = connection
+        document.getElementById('status').textContent = app
+          ? `Connected via ${app.via} to ${app.origin}; methods: ${app.methods.join(', ') || 'none'}`
+          : 'Not inside a Wefter app'
+        if (!app) return
+        app.on('theme', (theme) => log('event theme:', theme))
+        app.on('ping', (data) => log('event ping:', data))
+        app.emit('resize', { height: document.documentElement.scrollHeight })
+      })
+
+      const tryCall = async (label, run) => {
+        try {
+          log(label, '→', await run())
+        } catch (error) {
+          log(label, '✖', error.code ?? '', error.message)
+        }
+      }
+
+      document.getElementById('getUser').onclick = () =>
+        tryCall('getUser', () => app.call('getUser'))
+      document.getElementById('hello').onclick = () => {
+        app?.emit('hello', { from: location.origin, at: Date.now() })
+        log('sent hello')
+      }
+      document.getElementById('unknown').onclick = () =>
+        tryCall('deleteAccount', () => app.call('deleteAccount'))
+      document.getElementById('haptics').onclick = () =>
+        tryCall('haptics.vibrate', () =>
+          window.Wefter.invokeNative('haptics', 'vibrate', { duration: 80 }),
+        )
+      document.getElementById('clipboard').onclick = () =>
+        tryCall('clipboard.read', () => window.Wefter.invokeNative('clipboard', 'read', {}))
+      document.getElementById('away').onclick = () => (location.href = 'https://example.com/')
+    </script>
+  </body>
+</html>

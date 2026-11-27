@@ -158,7 +158,7 @@
 /** Demo of `@wefterjs/screen`: brightness, keep awake and orientation lock. */
 
 import { ref, onMounted } from 'vue'
-import { Screen, type OrientationType } from '@wefterjs/screen'
+import { Screen, type LockableOrientation, type OrientationType } from '@wefterjs/screen'
 import ModulePage from '@/components/common/ModulePage.vue'
 import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseConsole.vue'
 import Icons from '@/components/common/Icons.vue'
@@ -168,15 +168,16 @@ const isAwake = ref(false)
 const orientation = ref<OrientationType | string>('PORTRAIT')
 const logs = ref<LogItem[]>([])
 
-const lockableOrientations: OrientationType[] = [
+const lockableOrientations: LockableOrientation[] = [
   'portrait',
   'portrait-primary',
   'portrait-secondary',
   'landscape',
   'landscape-primary',
   'landscape-secondary',
+  'any',
 ]
-const selectedOrientation = ref<OrientationType>('portrait')
+const selectedOrientation = ref<LockableOrientation>('portrait')
 
 /** Current time, for log entries. */
 function now() {
@@ -294,7 +295,7 @@ async function fetchOrientation() {
 }
 
 /** Locks the screen to `mode`. */
-async function lockOrientationMode(mode: OrientationType) {
+async function lockOrientationMode(mode: LockableOrientation) {
   try {
     const res = await Screen.lockOrientation({ orientation: mode })
     orientation.value = mode
