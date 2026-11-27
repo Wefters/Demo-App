@@ -51,6 +51,12 @@ import { FRAMEWORK_VERSION } from '@/core/config'
 const app = useApp()
 
 const modules = [
+  {
+    name: 'Web APIs',
+    icon: 'Layers',
+    route: '/web-apis',
+    desc: 'Dialogs, files, camera, location & more',
+  },
   { name: 'App', icon: 'AppWindow', route: '/app', desc: 'Lifecycle, deep links & back button' },
   { name: 'Scanner', icon: 'ScanLine', route: '/scanner', desc: 'QR & barcode scanning' },
   { name: 'Biometric', icon: 'Fingerprint', route: '/biometric', desc: 'Auth & fingerprint' },

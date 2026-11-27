@@ -73,6 +73,7 @@ const app = useApp()
 /** One entry per page: label, Lucide icon name and route. */
 const navItems = [
   { name: 'Home', icon: 'House', route: '/' },
+  { name: 'Web APIs', icon: 'Layers', route: '/web-apis' },
   { name: 'App', icon: 'AppWindow', route: '/app' },
   { name: 'Scanner', icon: 'ScanLine', route: '/scanner' },
   { name: 'Biometric', icon: 'Fingerprint', route: '/biometric' },

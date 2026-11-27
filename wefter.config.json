@@ -35,5 +35,10 @@
   },
   "deepLinks": {
     "schemes": ["wefterdemo"]
+  },
+  "permissions": {
+    "camera": "The demo shows your camera on the Web APIs page and lets you take photos to upload.",
+    "microphone": "The demo shows your microphone level on the Web APIs page.",
+    "location": "The demo shows where you are on the Web APIs page."
   }
 }

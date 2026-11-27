@@ -46,7 +46,7 @@
     },
     "device": {
       "resolved": "0.0.2",
-      "integrity": "sha256-2e3483230c2eae6154eeed705ff06ee774d9dcecbdc121f38e5408bf87481e78"
+      "integrity": "sha256-a19e27f5c666966a9e3e78044e55b5a1a76c07e3ae462e4d0ae036ff1334f6ec"
     },
     "screen": {
       "resolved": "0.0.2",
@@ -61,5 +61,5 @@
       "integrity": "sha256-467348230878cec314b1620dfccb0cd11b62fdb241cc0d7180ac1c10ea7f4fb3"
     }
   },
-  "syncedAt": "2026-11-26T12:04:00.228Z"
+  "syncedAt": "2026-11-26T20:30:50.215Z"
 }

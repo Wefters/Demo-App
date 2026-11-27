@@ -20,6 +20,12 @@ const router = createRouter({
           meta: { title: 'Wefter' },
         },
         {
+          path: 'web-apis',
+          name: 'web-apis',
+          component: () => import('@/views/WebApis.vue'),
+          meta: { title: 'Web APIs' },
+        },
+        {
           path: 'app',
           name: 'app',
           component: () => import('@/views/App.vue'),
@@ -133,7 +139,7 @@ const router = createRouter({
 })
 
 router.afterEach(async (to, from, failure) => {
-  await nextTick();
+  await nextTick()
 
   document.querySelector('.main-container')?.scrollTo({
     top: 0,
