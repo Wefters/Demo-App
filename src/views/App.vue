@@ -3,7 +3,7 @@
     icon="AppWindow"
     title="Application Control Plane"
     desc="@wefterjs/app v0.0.1"
-    info="Build metadata, lifecycle state, deep-link ingestion, external URL handoff, memory warnings, and Android hardware back-button handling. Lifecycle, deep-link, memory and back-button events stream live while this screen is mounted."
+    info="Build metadata, lifecycle state, deep-link ingestion, external URL handoff, memory warnings, and back handling with onBack() from @wefterjs/core. Lifecycle, deep-link, memory and back events stream live while this screen is mounted."
   >
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
@@ -163,21 +163,23 @@
     <div class="p-4 bg-surface border border-border-subtle rounded-2xl flex flex-col gap-4">
       <div class="flex items-center justify-between">
         <div>
-          <h3 class="text-sm font-bold text-text-primary m-0">Hardware Back Button</h3>
+          <h3 class="text-sm font-bold text-text-primary m-0">Back</h3>
           <p class="text-xs text-text-tertiary m-0">
-            Android only — intercept the back press instead of quitting
+            <span class="font-mono">onBack()</span> from
+            <span class="font-mono">@wefterjs/core</span>: while on, this page handles Android's
+            back button and gesture instead of going back
           </p>
         </div>
         <button
-          @click="toggleBackIntercept"
+          @click="toggleBackHandling"
           class="px-3 py-1.5 text-xs font-bold rounded-xl transition-colors cursor-pointer"
           :class="
-            backIntercept
+            handlingBack
               ? 'bg-accent text-white'
               : 'bg-surface-raised text-text-secondary border border-border-subtle'
           "
         >
-          {{ backIntercept ? 'Intercepting' : 'Off' }}
+          {{ handlingBack ? 'Handling' : 'Off' }}
         </button>
       </div>
       <div
@@ -185,7 +187,7 @@
         class="p-3 bg-surface-raised border border-border-subtle rounded-xl flex flex-col gap-1"
       >
         <span class="text-[11px] text-text-tertiary"
-          >Last <span class="font-mono">app:backButton</span></span
+          >Last <span class="font-mono">onBack</span> event</span
         >
         <span class="text-sm font-mono text-accent">{{ lastBackButton }}</span>
       </div>
@@ -233,19 +235,18 @@
 <script setup lang="ts">
 /**
  * Demo of `@wefterjs/app`: app info, lifecycle state, opening URLs, minimise, relaunch and exit, low
- * memory warnings and Android back button interception. Also shows deep links, which come from
- * `@wefterjs/core`.
+ * memory warnings. Also shows deep links and back handling, which come from `@wefterjs/core`.
  */
 
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { App, type AppInfo, type AppLifecycleState, type Subscription } from '@wefterjs/app'
 import {
-  App,
-  type AppInfo,
-  type AppLifecycleState,
-  type AppBackButtonEvent,
-  type Subscription,
-} from '@wefterjs/app'
-import { getLaunchUrl, onDeepLink, type DeepLink, type DeepLinkSubscription } from '@wefterjs/core'
+  getLaunchUrl,
+  onBack,
+  onDeepLink,
+  type DeepLink,
+  type DeepLinkSubscription,
+} from '@wefterjs/core'
 import ModulePage from '@/components/common/ModulePage.vue'
 import ShowcaseConsole, { type LogItem } from '@/components/showcase/ShowcaseConsole.vue'
 import Icons from '@/components/common/Icons.vue'
@@ -256,8 +257,8 @@ const launchUrl = ref<string | null>(null)
 const lastDeepLink = ref<DeepLink | null>(null)
 const lastBackButton = ref<string | null>(null)
 const lastLowMemory = ref<number | null>(null)
-/** Back button interception is on by default in the plugin. */
-const backIntercept = ref(true)
+/** Whether this page handles back itself. */
+const handlingBack = ref(false)
 const externalUrl = ref('https://wefter.dev')
 const canOpenResult = ref<boolean | null>(null)
 const logs = ref<LogItem[]>([])
@@ -375,30 +376,33 @@ async function triggerExit() {
   }
 }
 
-/** Turns Android back button interception on or off. */
-async function toggleBackIntercept() {
-  const next = !backIntercept.value
-  try {
-    await App.setBackButtonInterceptEnabled(next)
-    backIntercept.value = next
-    log(`App.setBackButtonInterceptEnabled(${next})`, 'success', { intercepting: next })
-  } catch (err: any) {
-    log('App.setBackButtonInterceptEnabled()', 'error', {
-      error: err?.message || String(err),
-      code: err?.code,
-    })
-  }
-}
-
 let stateSub: Subscription | null = null
 let linkSub: DeepLinkSubscription | null = null
 let memSub: Subscription | null = null
-let backSub: Subscription | null = null
+let stopHandlingBack: (() => void) | null = null
 
 /**
- * Loads the app details and subscribes to every app event. With interception on, a back press goes back
- * in the page history when possible.
+ * Starts or stops handling back in this page. While handling, back only logs its event; otherwise the app
+ * goes back in history, then leaves.
  */
+function toggleBackHandling() {
+  if (stopHandlingBack) {
+    stopHandlingBack()
+    stopHandlingBack = null
+  } else {
+    stopHandlingBack = onBack((event) => {
+      lastBackButton.value = `${event.source}${event.edge ? ` (${event.edge})` : ''}, canGoBack: ${event.canGoBack}`
+      log('onBack', 'success', event)
+      return true
+    })
+  }
+  handlingBack.value = !!stopHandlingBack
+  log(handlingBack.value ? 'onBack(listener)' : 'onBack() removed', 'success', {
+    handling: handlingBack.value,
+  })
+}
+
+/** Loads the app details and subscribes to every app event. */
 onMounted(() => {
   void loadInfo()
   void loadState()
@@ -416,11 +420,6 @@ onMounted(() => {
     lastLowMemory.value = event.level
     log('app:lowMemory', 'success', event)
   })
-  backSub = App.onBackButton((event: AppBackButtonEvent) => {
-    lastBackButton.value = `canGoBack: ${event.canGoBack}`
-    log('app:backButton', 'success', event)
-    if (event.canGoBack) history.back()
-  })
 })
 
 /** Stops listening to app events. */
@@ -428,6 +427,6 @@ onUnmounted(() => {
   stateSub?.remove()
   linkSub?.remove()
   memSub?.remove()
-  backSub?.remove()
+  stopHandlingBack?.()
 })
 </script>

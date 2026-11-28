@@ -2,7 +2,7 @@
   "plugins": {
     "app": {
       "resolved": "0.0.1",
-      "integrity": "sha256-dfa721018a1cf39aaad8cf40b96a8780e9b37100accf4b6e74edcbf144866464"
+      "integrity": "sha256-d304e153b76dff8707206ca4c7754daa01717a822ad29b241742ffe6b24432a4"
     },
     "biometric": {
       "resolved": "0.0.1",
@@ -61,5 +61,5 @@
       "integrity": "sha256-a9a986b40649b640f98448708cb6724e3020b671eab0693e9dd25a18e79897a7"
     }
   },
-  "syncedAt": "2026-11-27T16:06:43.436Z"
+  "syncedAt": "2026-11-28T08:29:20.884Z"
 }
